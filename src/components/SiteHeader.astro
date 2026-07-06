@@ -1,0 +1,29 @@
+---
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about/", label: "About" },
+  { href: "/projects/", label: "Projects" },
+];
+
+const pathname = Astro.url.pathname;
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+---
+
+<header class="site-header">
+  <a class="brand" href={withBase("/")}>Boxifu</a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    {
+      navItems.map((item) => {
+        const href = withBase(item.href);
+        const isActive =
+          item.href === "/" ? pathname === import.meta.env.BASE_URL : pathname.includes(item.href);
+
+        return (
+          <a href={href} aria-current={isActive ? "page" : undefined}>
+            {item.label}
+          </a>
+        );
+      })
+    }
+  </nav>
+</header>

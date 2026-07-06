@@ -9,6 +9,8 @@ This is a static Astro portfolio for academic work, game development projects, a
 - Astro owns routing through `src/pages/`.
 - TypeScript is used for config, content schemas, and component props.
 - Project entries live in Markdown under `src/content/projects/`.
+- English and Chinese routes live under `/en/` and `/zh/`.
+- Shared interface translations live in `src/i18n/ui.ts`.
 - Shared page chrome lives in `src/layouts/BaseLayout.astro`.
 - Reusable UI pieces live in `src/components/`.
 - Static public files live in `public/assets/`.
@@ -37,6 +39,7 @@ The site is static and deployable to GitHub Pages. Avoid adding server-only feat
     ├── content/
     │   ├── config.ts
     │   └── projects/
+    ├── i18n/
     ├── layouts/
     ├── pages/
     └── styles/
@@ -48,6 +51,7 @@ Use these folders consistently:
 - `src/layouts/`: page-level wrappers and shells.
 - `src/components/`: reusable Astro components.
 - `src/content/projects/`: project Markdown entries.
+- `src/i18n/`: locale config, translation dictionaries, and localized content helpers.
 - `src/styles/`: global CSS and future shared stylesheets.
 - `src/assets/`: source assets that should be processed by Astro.
 - `public/assets/images/`: static images referenced by URL.
@@ -74,7 +78,34 @@ Prefer clear names over clever short names. Future edits should be obvious from 
 - Do not add animation or visual effects unless the design specifically needs them.
 - Do not duplicate the header, footer, or project-detail markup in page files.
 - Use `import.meta.env.BASE_URL` when linking to internal public routes or static assets from components/pages.
+- Use `localizedPath(locale, "/path/")` and `pathWithBase()` for locale-aware internal links.
 - Use normal HTML elements first. Add JavaScript only when static HTML cannot solve the problem.
+
+## Internationalization
+
+The public URL structure is symmetrical:
+
+```text
+/en/
+/en/about/
+/en/projects/
+/en/projects/project-slug/
+/zh/
+/zh/about/
+/zh/projects/
+/zh/projects/project-slug/
+```
+
+The root routes `/`, `/about/`, `/projects/`, and `/projects/project-slug/` are lightweight redirects to the English routes.
+
+Locale conventions:
+
+- Supported locales are defined in `src/i18n/config.ts`.
+- Shared UI copy is defined in `src/i18n/ui.ts`.
+- `BaseLayout.astro` receives a `locale` prop and sets the page language.
+- `SiteHeader.astro` renders the language switcher and locale-aware nav links.
+- Route files under `src/pages/[locale]/` generate English and Chinese pages from the same templates.
+- Keep route slugs in English kebab-case for both languages, for example `/zh/projects/precious-stones/`.
 
 ## Markdown Conventions
 
@@ -87,6 +118,8 @@ Use this structure for longer project pages:
 title: "Project Title"
 summary: "One clear sentence describing the project and why it matters."
 role: "Your role"
+locale: "en"
+projectSlug: "project-title"
 year: 2026
 status: "active"
 category: "Digital Games"
@@ -125,9 +158,9 @@ Use sentence-case headings. Keep the first paragraph understandable to someone o
 
 ## Reusable Project Page Template
 
-The dynamic route `src/pages/projects/[slug].astro` renders every project through `src/components/ProjectDetail.astro`.
+The dynamic route `src/pages/[locale]/projects/[slug].astro` renders every project through `src/components/ProjectDetail.astro`.
 
-Do not create one-off Astro pages for individual projects unless a project truly needs a custom layout. Add a Markdown file to `src/content/projects/` instead.
+Do not create one-off Astro pages for individual projects unless a project truly needs a custom layout. Add localized Markdown files to `src/content/projects/` instead.
 
 A copyable starter exists at:
 
@@ -139,18 +172,21 @@ When creating a real project, copy that structure into a new kebab-case Markdown
 
 ## How To Add A New Project
 
-1. Create a new Markdown file in `src/content/projects/`.
-2. Name it with lowercase kebab-case, for example `teaching-simulation-tool.md`.
-3. Fill in the required frontmatter.
-4. Add body content with `Overview`, `Contributions`, `Technical Notes`, and `Reflection` sections when appropriate.
-5. Set `featured: true` only for projects that should appear on the Home page.
-6. Run `pnpm build` before committing.
+1. Create an English Markdown file in `src/content/projects/`, for example `teaching-simulation-tool.md`.
+2. Create a Chinese Markdown file in `src/content/projects/zh/`. Prefix its filename with `zh-`, for example `zh-teaching-simulation-tool.md`, so Astro content IDs stay unique.
+3. Set `locale: "en"` on the English entry and `locale: "zh"` on the Chinese entry.
+4. Set the same `projectSlug` value in both files so language switching keeps users on the equivalent project.
+5. Fill in localized title, summary, role, tags, and body content.
+6. Set `featured: true` only for projects that should appear on the Home page.
+7. Run `pnpm build` before committing.
 
 The project list and detail page are generated automatically.
 
 Project metadata conventions:
 
 - `category` controls Home page grouping. Use one of `Digital Games`, `Computer Graphics / Simulations`, or `Board Games / Paper Prototypes`.
+- `locale` controls whether a project appears in `/en/` or `/zh/`.
+- `projectSlug` controls the public URL and should match between English and Chinese versions. Do not use a custom `slug` field because Astro treats that name specially.
 - `order` controls sorting inside a category. Use increments of 10 so future projects can fit between existing entries.
 - `media.type` can be `placeholder`, `image`, or `youtube`.
 - `media.src` is required for `image` and `youtube`. Use a public asset path for images, such as `assets/images/projects/project-slug/hero.webp`, or a YouTube video ID for YouTube.

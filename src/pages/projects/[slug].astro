@@ -1,23 +1,31 @@
 ---
-import { getCollection, render } from "astro:content";
-import ProjectDetail from "@components/ProjectDetail.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { localizedPath, pathWithBase } from "../../i18n/config";
+import { getLocalizedProjects, getProjectSlug } from "../../i18n/projects";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = getLocalizedProjects(await getCollection("projects"), "en");
 
   return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
+    params: { slug: getProjectSlug(project) },
+    props: { slug: getProjectSlug(project) },
   }));
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project);
+const { slug } = Astro.props;
+const target = pathWithBase(localizedPath("en", `/projects/${slug}/`));
 ---
 
-<BaseLayout title={project.data.title} description={project.data.summary}>
-  <ProjectDetail project={project}>
-    <Content />
-  </ProjectDetail>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Project | Boxifu</title>
+  </head>
+  <body>
+    <p><a href={target}>Continue to English project page</a></p>
+  </body>
+</html>

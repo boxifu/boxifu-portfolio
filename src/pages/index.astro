@@ -1,87 +1,19 @@
 ---
-import { getCollection } from "astro:content";
-import ProjectCard from "@components/ProjectCard.astro";
-import SocialLinks from "@components/SocialLinks.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { localizedPath, pathWithBase } from "../i18n/config";
 
-const projects = (await getCollection("projects"))
-  .filter((project) => project.data.featured)
-  .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
-
-const projectCategories = ["Digital Games", "Computer Graphics / Simulations", "Board Games / Paper Prototypes"];
-const headingId = (category: string) => `${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
+const target = pathWithBase(localizedPath("en"));
 ---
 
-<BaseLayout
-  title="Boxifu"
-  description="Academic and game developer portfolio focused on research, playable systems, and maintainable technical work."
-  pageClass="home-page"
->
-  <section
-    class="hero section hero--with-background"
-    style={`--hero-background-image: url("${import.meta.env.BASE_URL}assets/images/home/home-background-01.png")`}
-  >
-    <p class="eyebrow">Portfolio</p>
-    <h1><span class="hero__name">Boxi Fu</span></h1>
-    <div class="quick-about">
-      <h2>Game Designer, Programmer, and Technical Artist</h2>
-      <p>I've received my Master of Science in CS Game Development at USC Games.</p>
-      <p>I've received my bachelor's degree in Computer Science and Applied Mathematics from UC Berkeley.</p>
-      <p>
-        Thank you for checking out my portfolio website! You can play some of the games through my
-        <a href="https://boxifu.itch.io/">itch.io</a> links!
-      </p>
-    </div>
-    <div class="button-row">
-      <a class="button" href={`${import.meta.env.BASE_URL}projects/`}>View projects</a>
-      <a class="button button--secondary" href={`${import.meta.env.BASE_URL}about/`}>About</a>
-    </div>
-    <SocialLinks />
-  </section>
-
-  <section class="section split-section" aria-labelledby="focus-heading">
-    <div>
-      <p class="eyebrow">Focus</p>
-      <h2 id="focus-heading">A portfolio built for depth, not noise.</h2>
-    </div>
-    <div class="feature-grid">
-      <article>
-        <h3>Research-minded</h3>
-        <p>Space for academic context, methods, publications, presentations, and reflective project writing.</p>
-      </article>
-      <article>
-        <h3>Game developer ready</h3>
-        <p>Project pages can grow to include roles, design goals, technical notes, playable builds, media, and source links.</p>
-      </article>
-      <article>
-        <h3>Easy to extend</h3>
-        <p>Reusable layouts and Markdown content make future edits straightforward for both humans and coding agents.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="featured-heading">
-    <div class="section-heading">
-      <p class="eyebrow">Selected work</p>
-      <h2 id="featured-heading">Projects</h2>
-    </div>
-    {
-      projectCategories.map((category) => {
-        const categoryProjects = projects.filter((project) => project.data.category === category);
-
-        return (
-          categoryProjects.length > 0 && (
-            <section class="project-category" aria-labelledby={headingId(category)}>
-              <h3 id={headingId(category)}>{category}</h3>
-              <div class="project-grid project-grid--gallery">
-                {categoryProjects.map((project) => (
-                  <ProjectCard project={project} />
-                ))}
-              </div>
-            </section>
-          )
-        );
-      })
-    }
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Boxifu</title>
+  </head>
+  <body>
+    <p><a href={target}>Continue to English site</a></p>
+  </body>
+</html>

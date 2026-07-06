@@ -6,6 +6,8 @@ const projects = defineCollection({
     title: z.string(),
     summary: z.string(),
     role: z.string().optional(),
+    locale: z.enum(["en", "zh"]).default("en"),
+    projectSlug: z.string().optional(),
     year: z.number(),
     status: z.enum(["active", "complete", "archived"]).default("complete"),
     category: z

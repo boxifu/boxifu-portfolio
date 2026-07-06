@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "@components/ProjectCard.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { locales, type Locale } from "../../../i18n/config";
+import { getLocalizedProjects, sortProjects } from "../../../i18n/projects";
+import { useTranslations } from "../../../i18n/ui";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const t = useTranslations(locale);
+const projects = sortProjects(getLocalizedProjects(await getCollection("projects"), locale));
+---
+
+<BaseLayout title={t.projects.title} description={t.projects.description} locale={locale}>
+  <section class="section page-intro">
+    <p class="eyebrow">{t.projects.eyebrow}</p>
+    <h1>{t.projects.heading}</h1>
+    <p>{t.projects.intro}</p>
+  </section>
+
+  <section class="section">
+    <div class="project-grid project-grid--wide">
+      {projects.map((project) => <ProjectCard project={project} locale={locale} />)}
+    </div>
+  </section>
+</BaseLayout>

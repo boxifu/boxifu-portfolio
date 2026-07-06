@@ -1,15 +1,19 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/ui";
 
 type Props = {
   project: CollectionEntry<"projects">;
+  locale: Locale;
 };
 
-const { project } = Astro.props;
+const { project, locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <article class="section project-detail">
-  <a class="back-link" href={`${import.meta.env.BASE_URL}projects/`}>Back to projects</a>
+  <a class="back-link" href={`${import.meta.env.BASE_URL}${locale}/projects/`}>{t.projects.backToProjects}</a>
   <header class="project-detail__header">
     <p class="eyebrow">{project.data.year} / {project.data.status}</p>
     <h1>{project.data.title}</h1>
@@ -17,7 +21,7 @@ const { project } = Astro.props;
     {
       project.data.role && (
         <p class="project-detail__role">
-          <strong>Role:</strong> {project.data.role}
+          <strong>{t.projects.role}</strong> {project.data.role}
         </p>
       )
     }
@@ -38,8 +42,8 @@ const { project } = Astro.props;
 
   {
     project.data.links.length > 0 && (
-      <footer class="project-links">
-        <h2>Links</h2>
+        <footer class="project-links">
+          <h2>{t.projects.links}</h2>
         <ul>
           {project.data.links.map((link) => (
             <li>

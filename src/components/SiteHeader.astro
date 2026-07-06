@@ -1,22 +1,36 @@
 ---
+import { localeLabels, locales, localizedPath, pathWithBase, type Locale } from "../i18n/config";
+import { useTranslations } from "../i18n/ui";
+
+type Props = {
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/about/", label: "About" },
-  { href: "/projects/", label: "Projects" },
+  { href: localizedPath(locale), label: t.nav.home },
+  { href: localizedPath(locale, "/about/"), label: t.nav.about },
+  { href: localizedPath(locale, "/projects/"), label: t.nav.projects },
 ];
 
 const pathname = Astro.url.pathname;
-const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+const basePath = new URL(import.meta.env.BASE_URL, Astro.url).pathname;
+const relativePath = pathname.startsWith(basePath) ? pathname.slice(basePath.length) : pathname.replace(/^\//, "");
+const parts = relativePath.split("/").filter(Boolean);
+const suffix = `/${parts.slice(1).join("/")}${parts.length > 1 ? "/" : ""}`;
 ---
 
 <header class="site-header">
-  <a class="brand" href={withBase("/")}>Boxifu</a>
-  <nav class="site-nav" aria-label="Primary navigation">
+  <a class="brand" href={pathWithBase(localizedPath(locale))}>{t.siteName}</a>
+  <nav class="site-nav" aria-label={t.nav.ariaLabel}>
     {
       navItems.map((item) => {
-        const href = withBase(item.href);
+        const href = pathWithBase(item.href);
         const isActive =
-          item.href === "/" ? pathname === import.meta.env.BASE_URL : pathname.includes(item.href);
+          item.href === localizedPath(locale)
+            ? pathname.endsWith(item.href)
+            : pathname.includes(item.href);
 
         return (
           <a href={href} aria-current={isActive ? "page" : undefined}>
@@ -24,6 +38,18 @@ const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^
           </a>
         );
       })
+    }
+  </nav>
+  <nav class="language-switcher" aria-label={t.nav.language}>
+    {
+      locales.map((item) => (
+        <a
+          href={pathWithBase(localizedPath(item, suffix))}
+          aria-current={item === locale ? "true" : undefined}
+        >
+          {localeLabels[item]}
+        </a>
+      ))
     }
   </nav>
 </header>

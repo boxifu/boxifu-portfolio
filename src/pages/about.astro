@@ -1,40 +1,19 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { localizedPath, pathWithBase } from "../i18n/config";
+
+const target = pathWithBase(localizedPath("en", "/about/"));
 ---
 
-<BaseLayout
-  title="About"
-  description="About Boxifu, an academic and game developer portfolio."
->
-  <section class="section page-intro">
-    <p class="eyebrow">About</p>
-    <h1>Academic curiosity with a game developer's eye for systems.</h1>
-    <p>
-      This page is the home for a fuller biography, research interests, education, teaching, tools, and creative practice.
-      The first version keeps the structure ready without pretending to know details that should come directly from you.
-    </p>
-  </section>
-
-  <section class="section content-columns" aria-label="About details">
-    <article>
-      <h2>Research and academic work</h2>
-      <p>
-        Use this section for research areas, publications, conference work, lab affiliations, or teaching experience.
-        Keeping it in page content makes it easy to revise as your academic work evolves.
-      </p>
-    </article>
-    <article>
-      <h2>Game development</h2>
-      <p>
-        Use this section for engines, design interests, prototypes, shipped work, team roles, and the kinds of player
-        experiences you care about building.
-      </p>
-    </article>
-    <article>
-      <h2>Technical practice</h2>
-      <p>
-        Use this section for programming languages, tools, systems work, production workflows, and maintainability values.
-      </p>
-    </article>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>About | Boxifu</title>
+  </head>
+  <body>
+    <p><a href={target}>Continue to English about page</a></p>
+  </body>
+</html>

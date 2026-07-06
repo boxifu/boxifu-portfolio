@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "@components/ProjectCard.astro";
+import SocialLinks from "@components/SocialLinks.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { locales, type Locale, localizedPath } from "../../i18n/config";
+import { getLocalizedProjects, sortProjects } from "../../i18n/projects";
+import { useTranslations } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const t = useTranslations(locale);
+const projects = sortProjects(getLocalizedProjects(await getCollection("projects"), locale).filter((project) => project.data.featured));
+const headingId = (category: string) => `${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
+---
+
+<BaseLayout title={t.home.title} description={t.home.description} locale={locale} pageClass="home-page">
+  <section
+    class="hero section hero--with-background"
+    style={`--hero-background-image: url("${import.meta.env.BASE_URL}assets/images/home/home-background-01.png")`}
+  >
+    <p class="eyebrow">{t.home.eyebrow}</p>
+    <h1><span class="hero__name">{t.home.name}</span></h1>
+    <div class="quick-about">
+      <h2>{t.home.role}</h2>
+      <p>{t.home.masters}</p>
+      <p>{t.home.bachelors}</p>
+      <p>
+        {t.home.thanksPrefix}
+        <a href="https://boxifu.itch.io/"> {t.home.thanksLink}</a>
+        {locale === "zh" ? t.home.thanksSuffix : ` ${t.home.thanksSuffix}`}
+      </p>
+    </div>
+    <div class="button-row">
+      <a class="button" href={`${import.meta.env.BASE_URL}${localizedPath(locale, "/projects/").replace(/^\//, "")}`}>
+        {t.home.viewProjects}
+      </a>
+      <a class="button button--secondary" href={`${import.meta.env.BASE_URL}${localizedPath(locale, "/about/").replace(/^\//, "")}`}>
+        {t.home.about}
+      </a>
+    </div>
+    <SocialLinks />
+  </section>
+
+  <section class="section split-section" aria-labelledby="focus-heading">
+    <div>
+      <p class="eyebrow">{t.home.focusEyebrow}</p>
+      <h2 id="focus-heading">{t.home.focusTitle}</h2>
+    </div>
+    <div class="feature-grid">
+      {
+        t.home.focusCards.map((card) => (
+          <article>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="featured-heading">
+    <div class="section-heading">
+      <p class="eyebrow">{t.home.selectedWork}</p>
+      <h2 id="featured-heading">{t.home.projects}</h2>
+    </div>
+    {
+      t.projects.categories.map((category) => {
+        const categoryProjects = projects.filter((project) => project.data.category === category.key);
+
+        return (
+          categoryProjects.length > 0 && (
+            <section class="project-category" aria-labelledby={headingId(category.key)}>
+              <h3 id={headingId(category.key)}>{category.label}</h3>
+              <div class="project-grid project-grid--gallery">
+                {categoryProjects.map((project) => (
+                  <ProjectCard project={project} locale={locale} />
+                ))}
+              </div>
+            </section>
+          )
+        );
+      })
+    }
+  </section>
+</BaseLayout>

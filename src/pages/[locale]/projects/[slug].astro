@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from "astro:content";
+import ProjectDetail from "@components/ProjectDetail.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { locales, type Locale } from "../../../i18n/config";
+import { getLocalizedProjects, getProjectSlug } from "../../../i18n/projects";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return locales.flatMap((locale) =>
+    getLocalizedProjects(projects, locale).map((project) => ({
+      params: { locale, slug: getProjectSlug(project) },
+      props: { locale, project },
+    })),
+  );
+}
+
+const { locale, project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title} description={project.data.summary} locale={locale as Locale}>
+  <ProjectDetail project={project} locale={locale as Locale}>
+    <Content />
+  </ProjectDetail>
+</BaseLayout>

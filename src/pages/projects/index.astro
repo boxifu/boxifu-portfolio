@@ -1,27 +1,19 @@
 ---
-import { getCollection } from "astro:content";
-import ProjectCard from "@components/ProjectCard.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { localizedPath, pathWithBase } from "../../i18n/config";
 
-const projects = (await getCollection("projects")).sort((a, b) => b.data.year - a.data.year);
+const target = pathWithBase(localizedPath("en", "/projects/"));
 ---
 
-<BaseLayout
-  title="Projects"
-  description="Projects by Boxifu across academic work, game development, and technical experiments."
->
-  <section class="section page-intro">
-    <p class="eyebrow">Projects</p>
-    <h1>Work that can grow from short summaries into detailed case studies.</h1>
-    <p>
-      Each project is stored as a Markdown entry with typed metadata. Add a new file in
-      <code>src/content/projects</code> to create another project page.
-    </p>
-  </section>
-
-  <section class="section">
-    <div class="project-grid project-grid--wide">
-      {projects.map((project) => <ProjectCard project={project} />)}
-    </div>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Projects | Boxifu</title>
+  </head>
+  <body>
+    <p><a href={target}>Continue to English projects page</a></p>
+  </body>
+</html>

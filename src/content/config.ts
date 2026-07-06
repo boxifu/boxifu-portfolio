@@ -8,6 +8,17 @@ const projects = defineCollection({
     role: z.string().optional(),
     year: z.number(),
     status: z.enum(["active", "complete", "archived"]).default("complete"),
+    category: z
+      .enum(["Digital Games", "Computer Graphics / Simulations", "Board Games / Paper Prototypes"])
+      .default("Digital Games"),
+    order: z.number().default(999),
+    media: z
+      .object({
+        type: z.enum(["image", "youtube", "placeholder"]).default("placeholder"),
+        src: z.string().optional(),
+        alt: z.string().optional(),
+      })
+      .default({ type: "placeholder" }),
     tags: z.array(z.string()).default([]),
     links: z
       .array(

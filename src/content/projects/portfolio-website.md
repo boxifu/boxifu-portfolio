@@ -4,6 +4,11 @@ summary: "A static Astro portfolio designed to grow with academic, research, and
 role: "Designer and developer"
 year: 2026
 status: "active"
+category: "Digital Games"
+order: 99
+media:
+  type: "placeholder"
+  alt: "Portfolio website preview"
 tags:
   - Astro
   - TypeScript

@@ -4,6 +4,11 @@ summary: "One clear sentence describing the project and why it matters."
 role: "Your role"
 year: 2026
 status: "active"
+category: "Digital Games"
+order: 10
+media:
+  type: "placeholder"
+  alt: "Project media placeholder"
 tags:
   - Unity
   - Research

@@ -1,0 +1,35 @@
+---
+const links = [
+  {
+    label: "Itch.io",
+    href: "https://boxifu.itch.io/",
+    icon: "assets/images/social/itch-io.png",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/boxifu/",
+    icon: "assets/images/social/linkedin.png",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/f1uffyfu/",
+    icon: "assets/images/social/instagram.png",
+  },
+  {
+    label: "ArtStation",
+    href: "https://www.artstation.com/boxifu_la",
+    icon: "assets/images/social/artstation.png",
+  },
+];
+---
+
+<nav class="social-links" aria-label="Social links">
+  {
+    links.map((link) => (
+      <a href={link.href} aria-label={link.label} target="_blank" rel="noreferrer">
+        <img src={`${import.meta.env.BASE_URL}${link.icon}`} alt="" loading="lazy" />
+        <span>{link.label}</span>
+      </a>
+    ))
+  }
+</nav>

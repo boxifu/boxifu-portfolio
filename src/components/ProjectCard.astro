@@ -7,12 +7,31 @@ type Props = {
 
 const { project } = Astro.props;
 const href = `${import.meta.env.BASE_URL}projects/${project.slug}/`;
+const media = project.data.media;
+const mediaSrc = media.src?.startsWith("http")
+  ? media.src
+  : media.src
+    ? `${import.meta.env.BASE_URL}${media.src.replace(/^\//, "")}`
+    : "";
 ---
 
 <article class="project-card">
-  <div class="project-card__meta">
-    <span>{project.data.year}</span>
-    <span>{project.data.status}</span>
+  <div class="project-card__media" aria-label={`${project.data.title} media`}>
+    {
+      media.type === "image" && mediaSrc ? (
+        <img src={mediaSrc} alt={media.alt ?? `${project.data.title} preview`} loading="lazy" />
+      ) : media.type === "youtube" && media.src ? (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${media.src}`}
+          title={`${project.data.title} video`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        />
+      ) : (
+        <span>{project.data.title}</span>
+      )
+    }
   </div>
   <h2><a href={href}>{project.data.title}</a></h2>
   <p>{project.data.summary}</p>

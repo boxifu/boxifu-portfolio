@@ -89,6 +89,11 @@ summary: "One clear sentence describing the project and why it matters."
 role: "Your role"
 year: 2026
 status: "active"
+category: "Digital Games"
+order: 10
+media:
+  type: "placeholder"
+  alt: "Project media placeholder"
 tags:
   - Unity
   - Research
@@ -142,6 +147,14 @@ When creating a real project, copy that structure into a new kebab-case Markdown
 6. Run `pnpm build` before committing.
 
 The project list and detail page are generated automatically.
+
+Project metadata conventions:
+
+- `category` controls Home page grouping. Use one of `Digital Games`, `Computer Graphics / Simulations`, or `Board Games / Paper Prototypes`.
+- `order` controls sorting inside a category. Use increments of 10 so future projects can fit between existing entries.
+- `media.type` can be `placeholder`, `image`, or `youtube`.
+- `media.src` is required for `image` and `youtube`. Use a public asset path for images, such as `assets/images/projects/project-slug/hero.webp`, or a YouTube video ID for YouTube.
+- `media.alt` should describe the image when `media.type` is `image` or describe the placeholder when no media is ready yet.
 
 ## How To Add Images
 

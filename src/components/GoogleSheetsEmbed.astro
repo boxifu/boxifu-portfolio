@@ -1,0 +1,14 @@
+---
+type Props = {
+  url: string;
+  title: string;
+};
+
+const { url, title } = Astro.props;
+const src = url.includes("output=html") ? url : `${url.replace(/\/edit.*$/, "")}/pubhtml?widget=true&headers=false`;
+---
+
+<figure class="embed embed--document">
+  <iframe src={src} title={title} loading="lazy"></iframe>
+  <figcaption>{title}</figcaption>
+</figure>

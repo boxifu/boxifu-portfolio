@@ -48,23 +48,17 @@ export const ui = {
       title: "About",
       description: "About Boxifu, an academic and game developer portfolio.",
       eyebrow: "About",
-      heading: "Academic curiosity with a game developer's eye for systems.",
-      intro:
-        "This page is the home for a fuller biography, research interests, education, teaching, tools, and creative practice. The first version keeps the structure ready without pretending to know details that should come directly from you.",
-      sections: [
-        {
-          title: "Research and academic work",
-          body: "Use this section for research areas, publications, conference work, lab affiliations, or teaching experience. Keeping it in page content makes it easy to revise as your academic work evolves.",
-        },
-        {
-          title: "Game development",
-          body: "Use this section for engines, design interests, prototypes, shipped work, team roles, and the kinds of player experiences you care about building.",
-        },
-        {
-          title: "Technical practice",
-          body: "Use this section for programming languages, tools, systems work, production workflows, and maintainability values.",
-        },
+      heading: "Hi! I'm Boxi Fu,",
+      intro: [
+        "and I’m a game designer and developer at USC ICT, recently graduated with a degree in Computer Science - Game Development at the USC Viterbi School of Engineering, at the University of Southern California, in the USC Games program.",
+        "I have a strong computer science and mathematics background, yet decided to pursue a career in game development during my senior year of undergraduate study at University of California, Berkeley. I see game design and programming as a perfect marriage between my coding experience and my interests in arts and music.",
+        "In my free time, I make digital art: whether it's 2D fan art of games I play, 3D models in Blender, or Live2D models I experiment with. Recently, I've been experimenting with generative AI, specifically Stable Diffusion with LoRA for AI Art. I also hope that I can get better at playing League of Legends.",
       ],
+      photoAlt: "Boxi Fu wearing sunglasses in front of a stone wall",
+      resumeTitle: "Resume",
+      resumeBody: "A current game development resume is embedded below. You can also open or download the PDF directly.",
+      resumeOpen: "Open resume PDF",
+      resumeDownload: "Download resume",
     },
     projects: {
       title: "Projects",
@@ -132,23 +126,17 @@ export const ui = {
       title: "关于",
       description: "关于 Boxifu 的学术与游戏开发作品集。",
       eyebrow: "关于",
-      heading: "带着游戏开发者的系统视角探索学术与创作。",
-      intro:
-        "这个页面会逐步补充更完整的个人简介、研究兴趣、教育背景、教学经历、工具经验与创作实践。当前版本先保留结构，之后可以继续替换成更精确的个人内容。",
-      sections: [
-        {
-          title: "研究与学术",
-          body: "这里可以放研究方向、论文、会议展示、实验室经历或教学经历。内容保留在页面层，便于随着学术经历更新。",
-        },
-        {
-          title: "游戏开发",
-          body: "这里可以放引擎经验、设计兴趣、原型、发布作品、团队职责，以及你关心的玩家体验类型。",
-        },
-        {
-          title: "技术实践",
-          body: "这里可以放编程语言、工具链、系统开发、制作流程，以及你对可维护性的理解。",
-        },
+      heading: "你好！我是付伯曦，",
+      intro: [
+        "我是一名游戏设计师与开发者，目前在 USC ICT 工作，近期从南加州大学 Viterbi 工程学院的计算机科学 - 游戏开发方向毕业，并参与 USC Games 项目。",
+        "我有较强的计算机科学与数学背景，但在 UC Berkeley 本科四年级时决定进入游戏开发领域。我认为游戏设计与程序开发很好地结合了我的编程经验，以及我对艺术和音乐的兴趣。",
+        "空闲时，我会创作数字艺术：包括喜欢的游戏同人 2D 插画、Blender 3D 模型，以及实验性的 Live2D 模型。最近我也在尝试生成式 AI，尤其是使用 Stable Diffusion 与 LoRA 创作 AI Art。我还希望自己能把英雄联盟打得更好一点。",
       ],
+      photoAlt: "付伯曦戴着太阳镜站在石墙前",
+      resumeTitle: "简历",
+      resumeBody: "下面嵌入的是当前的游戏开发方向简历。你也可以直接打开或下载 PDF。",
+      resumeOpen: "打开简历 PDF",
+      resumeDownload: "下载简历",
     },
     projects: {
       title: "项目",

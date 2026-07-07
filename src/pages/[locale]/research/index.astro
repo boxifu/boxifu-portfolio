@@ -1,0 +1,82 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { locales, type Locale } from "../../../i18n/config";
+import { useTranslations } from "../../../i18n/ui";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const t = useTranslations(locale);
+---
+
+<BaseLayout title={t.research.title} description={t.research.description} locale={locale}>
+  <section
+    class="section page-intro research-hero hero--with-background"
+    style={`--hero-background-image: url("${import.meta.env.BASE_URL}assets/images/research/research-background.avif")`}
+  >
+    <p class="eyebrow">{t.research.eyebrow}</p>
+    <h1>{t.research.heading}</h1>
+    <p>{t.research.intro}</p>
+  </section>
+
+  <section class="section research-layout" aria-labelledby="research-list-heading">
+    <aside class="research-note">
+      <h2>{t.research.noteTitle}</h2>
+      <p>{t.research.noteBody}</p>
+      <p class="research-note__profile">{t.research.profileSummary}</p>
+      <a class="button button--secondary" href={t.research.profileUrl} target="_blank" rel="noreferrer">
+        {t.research.profileLabel}
+      </a>
+    </aside>
+
+    <div class="research-list" id="research-list-heading">
+      <section class="research-group" aria-labelledby="coauthored-publications-heading">
+        <h2 id="coauthored-publications-heading">{t.research.listTitle}</h2>
+        {
+          t.research.entries.map((entry) => (
+            <article class="research-entry">
+              <div>
+                <h3>
+                  <a href={entry.url} target="_blank" rel="noreferrer">{entry.title}</a>
+                </h3>
+                <p class="research-entry__meta">{entry.meta}</p>
+                <p>{entry.body}</p>
+              </div>
+              <ul class="tag-list" aria-label={`${entry.title} tags`}>
+                {entry.tags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </section>
+
+      <section class="research-group" aria-labelledby="contributed-publications-heading">
+        <div class="research-group__header">
+          <h2 id="contributed-publications-heading">{t.research.contributedTitle}</h2>
+          <p>{t.research.contributedIntro}</p>
+        </div>
+        {
+          t.research.contributedEntries.map((entry) => (
+            <article class="research-entry">
+              <div>
+                <h3>
+                  <a href={entry.url} target="_blank" rel="noreferrer">{entry.title}</a>
+                </h3>
+                <p class="research-entry__meta">{entry.meta}</p>
+                <p>{entry.body}</p>
+              </div>
+              <ul class="tag-list" aria-label={`${entry.title} tags`}>
+                {entry.tags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </section>
+    </div>
+  </section>
+</BaseLayout>

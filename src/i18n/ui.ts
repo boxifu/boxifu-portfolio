@@ -1,5 +1,90 @@
 import type { Locale } from "./config";
 
+const googleScholarUrl = "https://scholar.google.com/citations?user=L3FMSnUAAAAJ&hl=en";
+
+const researchEntries = [
+  {
+    title: "Toward a virtual human exhibit for public ai education",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:2osOgNQ5qMEC",
+    meta: "W Ning, H Timothy, FU Boxi. International Conference on Computers in Education, 2023.",
+    body: "A public AI education contribution listed on Google Scholar.",
+    tags: ["AI education", "Virtual humans", "2023"],
+  },
+  {
+    title:
+      "The 7th Patient: An Evaluation of an Educational Game for High-School AI and Probability Education",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:UeHWp8X0CEIC",
+    meta: "DV Pynadath, N Wang, E Greenwald, KE Mayfield-Ingram, H Asturias, et al. Springer, 2026.",
+    body: "An evaluation-focused publication about an educational game for AI and probability learning.",
+    tags: ["Educational games", "AI education", "2026"],
+  },
+  {
+    title:
+      "The 7th patient: Lessons learned from an educational game for high-school AI and probability education",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:qjMakFHDy7sC",
+    meta: "DV Pynadath, N Wang, E Greenwald, KE Mayfield-Ingram, H Asturias, et al. IATED, 2026.",
+    body: "A lessons-learned publication connected to high-school AI and probability education.",
+    tags: ["Educational games", "AI education", "2026"],
+  },
+  {
+    title: "Becoming Fei: An Educational Game for AI and Data Science Education for Novice Learners",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:u-x6o8ySG0sC",
+    meta:
+      "N Wang, B Fu, B Dincer, O Masur, D Faizi, H Ravindran, J Wang, D Lai, et al. International Conference on Human-Computer Interaction, 69-79, 2025.",
+    body: "A publication on an educational game for novice AI and data science learners.",
+    tags: ["Educational games", "Data science", "2025"],
+  },
+  {
+    title: "THE 7TH PATIENT: AN EDUCATIONAL GAME FOR HIGH-SCHOOL AI AND PROBABILITY EDUCATION",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:9yKSN-GCB0IC",
+    meta: "DV Pynadath, N Wang, E Greenwald, KE Mayfield-Ingram, H Asturias, et al. ICERI2025 Proceedings, 9070-9079, 2025.",
+    body: "A proceedings publication about The 7th Patient as an educational AI and probability game.",
+    tags: ["Educational games", "Probability", "2025"],
+  },
+  {
+    title: "The 7th Patient: Designing an Educational Game for High School AI and Probability Education",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:d1gkVwhDpl0C",
+    meta: "N Wang, E Greenwald, D Pynadath, K Mayfield-Ingram, H Asturias, et al. Springer, 2025.",
+    body: "A design-focused publication about The 7th Patient and high-school AI/probability education.",
+    tags: ["Game design", "AI education", "2025"],
+  },
+  {
+    title: "Virtually Human: An Exhibit for Public AI Education",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L3FMSnUAAAAJ&citation_for_view=L3FMSnUAAAAJ:u5HHmVD_uO8C",
+    meta:
+      "N Wang, T Hurt, A Krakowski, E Greenwald, J Hammerman, et al. International Conference on Human-Computer Interaction, 436-443, 2025.",
+    body: "A publication on a public-facing AI education exhibit.",
+    tags: ["AI education", "Exhibit", "2025"],
+  },
+];
+
+const contributedResearchEntries = [
+  {
+    title: "Detecting Ambiguity Aversion in Cyberattack Behavior to Inform Cognitive Defense Strategies",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=29_O2FoAAAAJ&sortby=pubdate&citation_for_view=29_O2FoAAAAJ:_Qo2XoVZTnwC",
+    meta:
+      "Stephan Carney, Soham Hans, Sofia Hirschmann, Stacey Marsella, Yvonne Fonken, Peggy Wu, Nikolos Gurney. arXiv preprint arXiv:2512.08107, 2025/12/8.",
+    body: "A cognitive cybersecurity paper on modeling ambiguity aversion in red-team cyberattack behavior. Listed here as contributed work, not as a co-authored publication.",
+    tags: ["Contributed work", "Cybersecurity", "2025"],
+  },
+  {
+    title:
+      "Security Logs to ATT&CK Insights: Leveraging LLMs for High-Level Threat Understanding and Cognitive Trait Inference",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=29_O2FoAAAAJ&sortby=pubdate&citation_for_view=29_O2FoAAAAJ:HDshCWvjkbEC",
+    meta: "Soham Hans, Stacy Marsella, Sophia Hirschmann, Nikolos Gurney. arXiv preprint arXiv:2510.20930, 2025/10/23.",
+    body: "A paper on using large language models to map security logs to MITRE ATT&CK insights and infer cognitive traits. Listed here as contributed work, not as a co-authored publication.",
+    tags: ["Contributed work", "LLMs", "2025"],
+  },
+  {
+    title: "Risk Psychology & Cyber-Attack Tactics",
+    url: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=29_O2FoAAAAJ&sortby=pubdate&citation_for_view=29_O2FoAAAAJ:mB3voiENLucC",
+    meta:
+      "Rubens Kim, Stephan Carney, Yvonne Fonken, Soham Hans, Sofia Hirschmann, Stacy Marsella, Peggy Wu, Nikolos Gurney. arXiv preprint arXiv:2510.20657, 2025/10/23.",
+    body: "A paper examining whether measured cognitive processes predict cyber-attack behavior. Listed here as contributed work, not as a co-authored publication.",
+    tags: ["Contributed work", "Cyberpsychology", "2025"],
+  },
+];
+
 export const ui = {
   en: {
     siteName: "Boxifu",
@@ -7,6 +92,7 @@ export const ui = {
       home: "Home",
       about: "About",
       projects: "Projects",
+      research: "Research",
       ariaLabel: "Primary navigation",
       language: "Language switcher",
     },
@@ -76,6 +162,26 @@ export const ui = {
       role: "Role:",
       links: "Links",
     },
+    research: {
+      title: "Research",
+      description: "Research and publication notes by Boxifu.",
+      eyebrow: "Research",
+      heading: "Research and publications",
+      intro:
+        "A growing list for research interests, publications, citations, posters, talks, and related academic contributions. Full citation details will be added as this page is expanded.",
+      noteTitle: "Current focus",
+      noteBody:
+        "My academic work centers on simulation, educational games, and user interaction systems, especially projects that make AI, probability, and complex decision-making easier to understand through playable or interactive experiences.",
+      profileLabel: "Google Scholar",
+      profileUrl: googleScholarUrl,
+      profileSummary: "Boxi Fu on Google Scholar: Project Specialist, University of Southern California.",
+      listTitle: "Co-authored publications",
+      entries: researchEntries,
+      contributedTitle: "Contributed publications",
+      contributedIntro:
+        "Publications where I contributed project work or technical support but was not listed as a co-author.",
+      contributedEntries: contributedResearchEntries,
+    },
     footer: {
       heading: "Contact and Links",
       built: "Built with Astro.",
@@ -87,6 +193,7 @@ export const ui = {
       home: "首页",
       about: "关于",
       projects: "项目",
+      research: "研究",
       ariaLabel: "主导航",
       language: "语言切换",
     },
@@ -152,6 +259,25 @@ export const ui = {
       backToProjects: "返回项目列表",
       role: "职责：",
       links: "链接",
+    },
+    research: {
+      title: "研究",
+      description: "付伯曦的研究与发表内容。",
+      eyebrow: "研究",
+      heading: "研究与发表",
+      intro:
+        "这里将用于整理研究方向、发表内容、引用、海报、演讲以及相关学术贡献。具体引用信息会在后续补充。",
+      noteTitle: "当前方向",
+      noteBody:
+        "我的学术兴趣主要围绕仿真、教育游戏与用户交互系统，尤其关注如何通过可玩和交互式体验帮助用户理解 AI、概率以及复杂决策过程。",
+      profileLabel: "Google Scholar",
+      profileUrl: googleScholarUrl,
+      profileSummary: "Boxi Fu 的 Google Scholar 主页：Project Specialist, University of Southern California。",
+      listTitle: "共同作者发表",
+      entries: researchEntries,
+      contributedTitle: "参与贡献的发表",
+      contributedIntro: "这里列出我参与过项目工作或技术支持、但未作为共同作者署名的发表。",
+      contributedEntries: contributedResearchEntries,
     },
     footer: {
       heading: "联系方式与链接",

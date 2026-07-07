@@ -9,6 +9,7 @@ This is a static Astro portfolio for academic work, game development projects, a
 - Astro owns routing through `src/pages/`.
 - TypeScript is used for config, content schemas, and component props.
 - Project entries live in Markdown under `src/content/projects/`.
+- Research and publication placeholder entries currently live in `src/i18n/ui.ts`.
 - English and Chinese routes live under `/en/` and `/zh/`.
 - Shared interface translations live in `src/i18n/ui.ts`.
 - Shared page chrome lives in `src/layouts/BaseLayout.astro`.
@@ -90,13 +91,16 @@ The public URL structure is symmetrical:
 /en/about/
 /en/projects/
 /en/projects/project-slug/
+/en/research/
 /zh/
 /zh/about/
 /zh/projects/
 /zh/projects/project-slug/
+/zh/research/
 ```
 
 The root routes `/`, `/about/`, `/projects/`, and `/projects/project-slug/` are lightweight redirects to the English routes.
+The root route `/research/` is also a lightweight redirect to `/en/research/`.
 
 Locale conventions:
 
@@ -191,6 +195,26 @@ Project metadata conventions:
 - `media.type` can be `placeholder`, `image`, or `youtube`.
 - `media.src` is required for `image` and `youtube`. Use a public asset path for images, such as `assets/images/projects/project-slug/hero.webp`, or a YouTube video ID for YouTube.
 - `media.alt` should describe the image when `media.type` is `image` or describe the placeholder when no media is ready yet.
+
+## Research And Publications Page
+
+The research listing page lives at:
+
+```text
+src/pages/[locale]/research/index.astro
+```
+
+Its default English and Chinese page copy, including placeholder entries, currently lives in `src/i18n/ui.ts` under `research`.
+
+For now, keep this page as a simple listing page. Do not add a teaching section unless there is actual teaching experience to show.
+
+When adding real citations:
+
+1. Replace the placeholder `research.entries` values in `src/i18n/ui.ts`.
+2. Keep formal citation titles, author lists, venue names, and DOI text in their original language unless a translated citation is specifically needed.
+3. Put paper PDFs in `public/assets/pdfs/`.
+4. Link to Google Scholar, DOI pages, project pages, or PDFs from the entry text once the citation details are final.
+5. If the list grows beyond a handful of entries, consider creating a dedicated Astro content collection for publications instead of keeping entries in `ui.ts`.
 
 ## How To Add Images
 

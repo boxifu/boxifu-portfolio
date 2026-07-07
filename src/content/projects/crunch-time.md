@@ -1,21 +1,32 @@
 ---
 title: "Crunch Time"
-summary: "Board game and paper prototype placeholder. Full project notes and media will be added later."
-role: "Game designer"
-year: 2024
+summary: "A cooperative stack-building card game about collecting ingredients, choosing kitchenware, and cooking recipes under time pressure."
+role: "Artist, playtester, game designer"
+year: 2023
 status: "complete"
 category: "Board Games / Paper Prototypes"
 order: 30
 media:
-  type: "placeholder"
-  alt: "Crunch Time project media placeholder"
+  type: "youtube"
+  src: "u9kGhkMAxJ4"
+  alt: "Crunch Time gameplay video"
 tags:
   - Board Game
-  - Paper Prototype
+  - Cooperative
+  - Card Game
 featured: true
-links: []
+links:
+  - label: "Old portfolio page"
+    url: "https://sites.google.com/view/boxifu/crunch-time"
 ---
 
 ## Overview
 
-Project details, rules, prototype photos, and design notes will be added here later.
+Crunch Time is a cooperative stack-building card game about communication and collaboration. Four players collect ingredients, select kitchenware, and cook as many recipes as possible within the time limit.
+
+## Contributions
+
+- Worked on map design using basic graph theory.
+- Balanced ingredient counts, required recipes, and time restrictions.
+- Playtested with both development-team members and external players.
+- Helped create box cover art, ingredient cards, board art, recipe card layouts, and text/art assets.

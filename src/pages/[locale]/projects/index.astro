@@ -16,6 +16,7 @@ export function getStaticPaths() {
 const { locale } = Astro.props as { locale: Locale };
 const t = useTranslations(locale);
 const projects = sortProjects(getLocalizedProjects(await getCollection("projects"), locale));
+const headingId = (category: string) => `${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
 ---
 
 <BaseLayout title={t.projects.title} description={t.projects.description} locale={locale}>
@@ -25,9 +26,28 @@ const projects = sortProjects(getLocalizedProjects(await getCollection("projects
     <p>{t.projects.intro}</p>
   </section>
 
-  <section class="section">
-    <div class="project-grid project-grid--wide">
-      {projects.map((project) => <ProjectCard project={project} locale={locale} />)}
+  <section class="section" aria-labelledby="projects-list-heading">
+    <div class="section-heading">
+      <p class="eyebrow">{t.home.selectedWork}</p>
+      <h2 id="projects-list-heading">{t.home.projects}</h2>
     </div>
+    {
+      t.projects.categories.map((category) => {
+        const categoryProjects = projects.filter((project) => project.data.category === category.key);
+
+        return (
+          categoryProjects.length > 0 && (
+            <section class="project-category" aria-labelledby={headingId(category.key)}>
+              <h3 id={headingId(category.key)}>{category.label}</h3>
+              <div class="project-grid project-grid--wide">
+                {categoryProjects.map((project) => (
+                  <ProjectCard project={project} locale={locale} />
+                ))}
+              </div>
+            </section>
+          )
+        );
+      })
+    }
   </section>
 </BaseLayout>

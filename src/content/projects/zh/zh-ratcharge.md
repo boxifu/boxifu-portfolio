@@ -1,24 +1,27 @@
 ---
-title: "RatCharge"
-summary: "数字游戏项目占位页。之后会补充完整的项目说明与媒体内容。"
-role: "游戏设计 / 开发"
+title: "ReCharger"
+summary: "一款平台跳跃解谜游戏，玩家扮演电池，通过储存和消耗电量完成二段跳、放电、冲刺和电路谜题。"
+role: "程序、技术美术、动画、设计"
 locale: "zh"
-projectSlug: "ratcharge"
-year: 2024
+projectSlug: "recharger"
+year: 2023
 status: "complete"
 category: "Digital Games"
 order: 20
 media:
-  type: "placeholder"
-  alt: "RatCharge 项目媒体占位图"
+  type: "image"
+  src: "https://lh3.googleusercontent.com/sitesv/AA5AbUALRZ66aKlNf_p4aiH3ElZrz5YGLA0M73qoepQvsTIIMdpemrGG326pDUDeLU3yPI1C3OMi4Rai_NdaMb_9fG1fcHaMs-HeIyxRoWlMHNaai9_efvYG8urRCck4tuoQGcJyzAk4DLDXrqCzJxby1dJYfO0Svm_RoOf8pGUtSkn-i89RbfXc8T84Mw9iJa9dO9qwLJxs6dRURFa27rqhRQ3Styw_qg5g0AhB_Q=w1280"
+  alt: "ReCharger gameplay screenshot"
 tags:
-  - 数字游戏
+  - Unity
+  - 平台跳跃
+  - 解谜
 featured: true
 links:
-  - label: "Itch.io"
-    url: "https://boxifu.itch.io/"
+  - label: "旧作品集页面"
+    url: "https://sites.google.com/view/boxifu/recharger"
 ---
 
-## 概览
+## Overview
 
-之后会在这里补充项目细节、截图、试玩链接与开发笔记。
+ReCharger 是为 2023 BOOOM Challenge 制作的平台跳跃解谜游戏。后续可以继续补充关卡设计、机制细节和开发反思。

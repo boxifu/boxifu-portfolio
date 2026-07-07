@@ -156,7 +156,7 @@ export const ui = {
       categories: [
         { key: "Digital Games", label: "Digital Games" },
         { key: "Computer Graphics / Simulations", label: "Computer Graphics / Simulations" },
-        { key: "Board Games / Paper Prototypes", label: "Board Games / Paper Prototypes" },
+        { key: "Research Works", label: "Research and UI Works" },
       ],
       backToProjects: "Back to projects",
       role: "Role:",
@@ -254,7 +254,7 @@ export const ui = {
       categories: [
         { key: "Digital Games", label: "数字游戏" },
         { key: "Computer Graphics / Simulations", label: "计算机图形 / 仿真" },
-        { key: "Board Games / Paper Prototypes", label: "桌游 / 纸面原型" },
+        { key: "Research Works", label: "研究与 UI 项目" },
       ],
       backToProjects: "返回项目列表",
       role: "职责：",

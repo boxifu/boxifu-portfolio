@@ -1,22 +1,39 @@
 ---
 title: "Alibi"
-summary: "Digital game project placeholder. Full project notes and media will be added later."
-role: "Game designer / developer"
-year: 2024
+summary: "A narrative puzzle game about a therapist in training returning home to investigate the disappearance of a childhood friend."
+role: "Programmer, general artist"
+year: 2025
 status: "complete"
 category: "Digital Games"
 order: 50
 media:
-  type: "placeholder"
-  alt: "Alibi project media placeholder"
+  type: "youtube"
+  src: "hrOrApstOdk"
+  alt: "Alibi gameplay video"
 tags:
-  - Digital Game
+  - Unity
+  - Narrative
+  - Puzzle
 featured: true
 links:
-  - label: "Itch.io"
-    url: "https://boxifu.itch.io/"
+  - label: "Old portfolio page"
+    url: "https://sites.google.com/view/boxifu/alibi"
+  - label: "Design document"
+    url: "https://drive.google.com/open?id=1cqiy84Z8pUeZJ25bjqloEH-XCXAJkPGc5MweFvhPMDU"
 ---
 
 ## Overview
 
-Project details, screenshots, gameplay links, and development notes will be added here later.
+Alibi is a narrative puzzle game and USC Games MFA thesis project developed in collaboration between USC Games, Berklee College of Music, and Otis College of Art and Design. The player is a therapist in training returning to their hometown to investigate a childhood friend's disappearance.
+
+## Contributions
+
+- Implemented the dialogue system and custom text bubble UI using Unity and Pixel Crushers.
+- Built an interactable blackboard mini game that preserves drawing in the environment.
+- Implemented inventory and item pickup interactions.
+- Built a broom fighting sequence with character knockback, trigger-area detection, and timer systems.
+- Created 3D environment art support and general art assets.
+
+## Content Note
+
+The old page notes depictions of bullying, psychological trauma, and systemic violence within a school setting.

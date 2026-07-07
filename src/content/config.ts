@@ -11,7 +11,12 @@ const projects = defineCollection({
     year: z.number(),
     status: z.enum(["active", "complete", "archived"]).default("complete"),
     category: z
-      .enum(["Digital Games", "Computer Graphics / Simulations", "Board Games / Paper Prototypes"])
+      .enum([
+        "Digital Games",
+        "Computer Graphics / Simulations",
+        "Research Works",
+        "Board Games / Paper Prototypes",
+      ])
       .default("Digital Games"),
     order: z.number().default(999),
     media: z

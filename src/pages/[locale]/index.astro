@@ -16,8 +16,23 @@ export function getStaticPaths() {
 
 const { locale } = Astro.props as { locale: Locale };
 const t = useTranslations(locale);
-const projects = sortProjects(getLocalizedProjects(await getCollection("projects"), locale).filter((project) => project.data.featured));
-const headingId = (category: string) => `${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
+const visibleCategoryKeys = new Set(t.projects.categories.map((category) => category.key));
+const projects = sortProjects(getLocalizedProjects(await getCollection("projects"), locale)).filter((project) =>
+  visibleCategoryKeys.has(project.data.category),
+);
+
+function pickRandomProjects<T>(items: T[], count: number) {
+  const shuffled = [...items];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+
+  return shuffled.slice(0, count);
+}
+
+const selectedProjects = pickRandomProjects(projects, 6);
 ---
 
 <BaseLayout title={t.home.title} description={t.home.description} locale={locale} pageClass="home-page">
@@ -70,23 +85,13 @@ const headingId = (category: string) => `${category.toLowerCase().replace(/[^a-z
       <p class="eyebrow">{t.home.selectedWork}</p>
       <h2 id="featured-heading">{t.home.projects}</h2>
     </div>
-    {
-      t.projects.categories.map((category) => {
-        const categoryProjects = projects.filter((project) => project.data.category === category.key);
-
-        return (
-          categoryProjects.length > 0 && (
-            <section class="project-category" aria-labelledby={headingId(category.key)}>
-              <h3 id={headingId(category.key)}>{category.label}</h3>
-              <div class="project-grid project-grid--gallery">
-                {categoryProjects.map((project) => (
-                  <ProjectCard project={project} locale={locale} />
-                ))}
-              </div>
-            </section>
-          )
-        );
-      })
-    }
+    <div class="project-grid project-grid--gallery">
+      {selectedProjects.map((project) => <ProjectCard project={project} locale={locale} />)}
+    </div>
+    <div class="projects-cta">
+      <a class="button button--large" href={`${import.meta.env.BASE_URL}${localizedPath(locale, "/projects/").replace(/^\//, "")}`}>
+        {t.home.viewProjects}
+      </a>
+    </div>
   </section>
 </BaseLayout>

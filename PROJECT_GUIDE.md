@@ -181,14 +181,15 @@ When creating a real project, copy that structure into a new kebab-case Markdown
 3. Set `locale: "en"` on the English entry and `locale: "zh"` on the Chinese entry.
 4. Set the same `projectSlug` value in both files so language switching keeps users on the equivalent project.
 5. Fill in localized title, summary, role, tags, and body content.
-6. Set `featured: true` only for projects that should appear on the Home page.
+6. Set `featured: true` only for projects that deserve priority in future curated sections. The current Home page uses a build-time random selection from visible project categories.
 7. Run `pnpm build` before committing.
 
 The project list and detail page are generated automatically.
 
 Project metadata conventions:
 
-- `category` controls Home page grouping. Use one of `Digital Games`, `Computer Graphics / Simulations`, or `Board Games / Paper Prototypes`.
+- `category` controls visible grouping on the Projects page and the eligible random project pool on the Home page. Visible category keys are `Digital Games`, `Computer Graphics / Simulations`, and `Research Works`. The public label for `Research Works` is currently "Research and UI Works".
+- `Board Games / Paper Prototypes` remains a valid hidden category for archived board-game entries. Those entries stay in the content collection but do not appear in category lists while the category is omitted from `src/i18n/ui.ts`.
 - `locale` controls whether a project appears in `/en/` or `/zh/`.
 - `projectSlug` controls the public URL and should match between English and Chinese versions. Do not use a custom `slug` field because Astro treats that name specially.
 - `order` controls sorting inside a category. Use increments of 10 so future projects can fit between existing entries.

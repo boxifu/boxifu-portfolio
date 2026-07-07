@@ -356,6 +356,20 @@ body:not(.home-page) main {
   color: var(--color-accent-dark);
 }
 
+.button--large {
+  border-radius: 8px;
+  font-size: 1.02rem;
+  font-weight: 800;
+  min-height: 3.25rem;
+  padding: 0.9rem 1.35rem;
+}
+
+.projects-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .split-section {
   border-top: 1px solid var(--color-line);
   display: grid;

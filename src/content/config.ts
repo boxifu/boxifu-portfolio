@@ -26,6 +26,31 @@ const projects = defineCollection({
         alt: z.string().optional(),
       })
       .default({ type: "placeholder" }),
+    heroImage: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          caption: z.string().optional(),
+        }),
+      )
+      .default([]),
+    embeds: z
+      .array(
+        z.object({
+          type: z.enum(["youtube", "googleSlides", "googleDocs", "googleSheets"]),
+          title: z.string(),
+          url: z.string().url().optional(),
+          id: z.string().optional(),
+        }),
+      )
+      .default([]),
     tags: z.array(z.string()).default([]),
     links: z
       .array(

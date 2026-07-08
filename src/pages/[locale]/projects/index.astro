@@ -20,17 +20,16 @@ const headingId = (category: string) => `${category.toLowerCase().replace(/[^a-z
 ---
 
 <BaseLayout title={t.projects.title} description={t.projects.description} locale={locale}>
-  <section class="section page-intro">
+  <section
+    class="section page-intro projects-intro hero--with-background"
+    style={`--hero-background-image: url("${import.meta.env.BASE_URL}assets/images/projects/projects-background.png")`}
+  >
     <p class="eyebrow">{t.projects.eyebrow}</p>
     <h1>{t.projects.heading}</h1>
     <p>{t.projects.intro}</p>
   </section>
 
-  <section class="section" aria-labelledby="projects-list-heading">
-    <div class="section-heading">
-      <p class="eyebrow">{t.home.selectedWork}</p>
-      <h2 id="projects-list-heading">{t.home.projects}</h2>
-    </div>
+  <section class="section projects-list">
     {
       t.projects.categories.map((category) => {
         const categoryProjects = projects.filter((project) => project.data.category === category.key);

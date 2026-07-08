@@ -1,0 +1,17 @@
+---
+type Props = {
+  url: string;
+  title: string;
+};
+
+const { url, title } = Astro.props;
+const parsedUrl = new URL(url);
+const slide = parsedUrl.searchParams.get("slide");
+const baseUrl = `${parsedUrl.origin}${parsedUrl.pathname.replace(/\/(edit|present).*$/, "")}/embed`;
+const src = `${baseUrl}?start=false&loop=false&delayms=3000${slide ? `&slide=${slide}` : ""}`;
+---
+
+<figure class="embed embed--document">
+  <iframe src={src} title={title} loading="lazy" allowfullscreen></iframe>
+  <figcaption>{title}</figcaption>
+</figure>

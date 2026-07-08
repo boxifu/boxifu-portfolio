@@ -10,6 +10,26 @@ media:
   type: "youtube"
   src: "Ui3zpIDLO6c"
   alt: "Precious Stones gameplay video"
+heroImage:
+  src: "assets/images/projects/precious-stones/hero.png"
+  alt: "Precious Stones title screen with the dwarf blacksmith holding a hammer"
+gallery:
+  - src: "assets/images/projects/precious-stones/screenshot-01.png"
+    alt: "Precious Stones combat encounter with goblins near glowing crystals"
+    caption: "Combat arena with crystal lighting, enemy encounters, and the hammer-focused player kit."
+  - src: "assets/images/projects/precious-stones/screenshot-02.png"
+    alt: "Precious Stones puzzle room with spike traps, rails, and crystals"
+    caption: "Puzzle room combining interactable rails, traps, crystals, and top-down combat navigation."
+embeds:
+  - type: "youtube"
+    title: "Precious Stones gameplay video"
+    id: "Ui3zpIDLO6c"
+  - type: "googleSlides"
+    title: "Precious Stones design presentation"
+    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
+  - type: "googleSheets"
+    title: "Precious Stones design spreadsheet"
+    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
 tags:
   - Unity
   - Action Adventure
@@ -21,7 +41,9 @@ links:
   - label: "Old portfolio page"
     url: "https://sites.google.com/view/boxifu/precious-stones"
   - label: "Design presentation"
-    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present"
+    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
+  - label: "Design spreadsheet"
+    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
 ---
 
 ## Overview
@@ -36,7 +58,6 @@ Precious Stones is a character action-adventure game made for the Spring 2023 it
 - Created the main character 3D model, rigging, skinning, and related technical art support.
 - Worked on SFX and background music management.
 
-## Media To Review
+## Development Notes
 
-- YouTube gameplay video: `Ui3zpIDLO6c`
-- Old portfolio page includes additional screenshots and design documents.
+Precious Stones combines character action, environmental puzzles, and technical art work in one compact course project. The page format here is intended to become the reusable pattern for future project pages: a visual hero, a short overview, a screenshot gallery, contribution notes, and embedded development or design tools.

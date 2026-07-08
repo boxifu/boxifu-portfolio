@@ -150,9 +150,8 @@ export const ui = {
       title: "Projects",
       description: "Projects by Boxifu across academic work, game development, and technical experiments.",
       eyebrow: "Projects",
-      heading: "Work that can grow from short summaries into detailed case studies.",
-      intro:
-        "Each project is stored as a Markdown entry with typed metadata. Add a new localized file in src/content/projects to create another project page.",
+      heading: "Game & Research Projects",
+      intro: "Games, simulations, research prototypes, and technical art projects.",
       categories: [
         { key: "Digital Games", label: "Digital Games" },
         { key: "Computer Graphics / Simulations", label: "Computer Graphics / Simulations" },
@@ -161,6 +160,7 @@ export const ui = {
       backToProjects: "Back to projects",
       role: "Role:",
       links: "Links",
+      tools: "Development and Design Tools",
     },
     research: {
       title: "Research",
@@ -249,8 +249,8 @@ export const ui = {
       title: "项目",
       description: "付伯曦在学术、游戏开发与技术实验方向的项目作品。",
       eyebrow: "项目",
-      heading: "从简短介绍逐步扩展成完整案例研究的作品。",
-      intro: "每个项目都以带类型校验的 Markdown 条目保存。添加新的本地化项目文件即可生成对应项目页。",
+      heading: "游戏与研究项目",
+      intro: "游戏、仿真、研究原型与技术美术相关项目。",
       categories: [
         { key: "Digital Games", label: "数字游戏" },
         { key: "Computer Graphics / Simulations", label: "计算机图形 / 仿真" },
@@ -259,6 +259,7 @@ export const ui = {
       backToProjects: "返回项目列表",
       role: "职责：",
       links: "链接",
+      tools: "开发与设计工具",
     },
     research: {
       title: "研究",

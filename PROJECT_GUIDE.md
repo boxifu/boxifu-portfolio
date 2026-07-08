@@ -196,6 +196,11 @@ Project metadata conventions:
 - `media.type` can be `placeholder`, `image`, or `youtube`.
 - `media.src` is required for `image` and `youtube`. Use a public asset path for images, such as `assets/images/projects/project-slug/hero.webp`, or a YouTube video ID for YouTube.
 - `media.alt` should describe the image when `media.type` is `image` or describe the placeholder when no media is ready yet.
+- Keep proper project names untranslated across locales, for example `Precious Stones` or `Virtual Human Exhibition`. Translate descriptive titles such as `3D Art` or `Improved Cel Shader` when that improves readability.
+- `heroImage` adds a faded visual header to a project detail page. Use a public asset path without a leading slash, such as `assets/images/projects/project-slug/hero.png`.
+- `gallery` adds reusable screenshots below the project header. Each item needs `src` and `alt`; `caption` is optional.
+- `embeds` adds reusable project media or tools after the Markdown body. Supported types are `youtube`, `googleSlides`, `googleDocs`, and `googleSheets`.
+- Google embeds must be publicly accessible or shared/published in a way that allows iframe viewing. Keep the same URLs in `links` as a fallback when access is restricted.
 
 ## Research And Publications Page
 

@@ -21,29 +21,29 @@ gallery:
     alt: "Precious Stones puzzle room with spike traps, rails, and crystals"
     caption: "Puzzle room combining interactable rails, traps, crystals, and top-down combat navigation."
 embeds:
+  - type: "itch"
+    title: "Play Precious Stones on itch.io"
+    url: "https://itch.io/embed/2094510?bg_color=8a2900&fg_color=ffffff&link_color=3772ff"
+    group: "play"
+  - type: "googleSlides"
+    title: "Design presentation"
+    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
+    fileLabel: "Open presentation"
+    group: "documents"
+  - type: "googleSheets"
+    title: "Game macro spreadsheet"
+    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
+    fileLabel: "Open spreadsheet"
+    group: "documents"
   - type: "youtube"
     title: "Precious Stones gameplay video"
     id: "Ui3zpIDLO6c"
-  - type: "googleSlides"
-    title: "Precious Stones design presentation"
-    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
-  - type: "googleSheets"
-    title: "Precious Stones design spreadsheet"
-    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
+    group: "video"
 tags:
   - Unity
   - Action Adventure
   - Technical Art
 featured: true
-links:
-  - label: "Play on itch.io"
-    url: "https://boxifu.itch.io/precious-stones"
-  - label: "Old portfolio page"
-    url: "https://sites.google.com/view/boxifu/precious-stones"
-  - label: "Design presentation"
-    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
-  - label: "Design spreadsheet"
-    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
 ---
 
 ## Overview

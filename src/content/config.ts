@@ -44,10 +44,14 @@ const projects = defineCollection({
     embeds: z
       .array(
         z.object({
-          type: z.enum(["youtube", "googleSlides", "googleDocs", "googleSheets"]),
+          type: z.enum(["youtube", "googleSlides", "googleDocs", "googleSheets", "localDocument", "itch"]),
           title: z.string(),
           url: z.string().url().optional(),
           id: z.string().optional(),
+          previewSrc: z.string().optional(),
+          fileSrc: z.string().optional(),
+          fileLabel: z.string().optional(),
+          group: z.enum(["video", "documents", "play"]).optional(),
         }),
       )
       .default([]),

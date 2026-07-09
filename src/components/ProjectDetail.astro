@@ -17,40 +17,100 @@ const t = useTranslations(locale);
 const heroStyle = project.data.heroImage
   ? `--project-hero-image: url("${import.meta.env.BASE_URL}${project.data.heroImage.src.replace(/^\//, "")}")`
   : undefined;
+const galleryBaseId = `gallery-${(project.data.projectSlug ?? project.id).replace(/[^a-z0-9_-]/gi, "-")}`;
+const galleryItems = project.data.gallery.map((image, index) => ({
+  ...image,
+  id: `${galleryBaseId}-${index + 1}`,
+}));
+const getGoogleSlidesSrc = (url: string) => {
+  const parsedUrl = new URL(url);
+  const slide = parsedUrl.searchParams.get("slide");
+  const baseUrl = `${parsedUrl.origin}${parsedUrl.pathname.replace(/\/(edit|present).*$/, "")}/embed`;
+  return `${baseUrl}?start=false&loop=false&delayms=3000${slide ? `&slide=${slide}` : ""}`;
+};
+const getGoogleSheetsSrc = (url: string) =>
+  url.includes("output=html") ? url : `${url.replace(/\/edit.*$/, "")}/pubhtml?widget=true&headers=false`;
+const getGoogleDocsSrc = (url: string) => (url.includes("/preview") ? url : `${url.replace(/\/edit.*$/, "")}/preview`);
+const groupedEmbeds = {
+  play: project.data.embeds.filter((embed) => embed.group === "play" || embed.type === "itch"),
+  documents: project.data.embeds.filter(
+    (embed) =>
+      embed.group === "documents" ||
+      embed.type === "localDocument" ||
+      embed.type === "googleSlides" ||
+      embed.type === "googleDocs" ||
+      embed.type === "googleSheets",
+  ),
+  video: project.data.embeds.filter((embed) => embed.group === "video" || (embed.type === "youtube" && embed.group !== "documents")),
+  other: project.data.embeds.filter(
+    (embed) =>
+      !embed.group &&
+      embed.type !== "itch" &&
+      embed.type !== "localDocument" &&
+      embed.type !== "youtube" &&
+      embed.type !== "googleSlides" &&
+      embed.type !== "googleDocs" &&
+      embed.type !== "googleSheets",
+  ),
+};
 ---
 
-<article class="section project-detail">
-  <a class="back-link" href={`${import.meta.env.BASE_URL}${locale}/projects/`}>{t.projects.backToProjects}</a>
-  <header class:list={["project-detail__header", { "project-detail__header--image": project.data.heroImage }]} style={heroStyle}>
-    <p class="eyebrow">{project.data.year} / {project.data.status}</p>
-    <h1>{project.data.title}</h1>
-    <p>{project.data.summary}</p>
-    {
-      project.data.role && (
-        <p class="project-detail__role">
-          <strong>{t.projects.role}</strong> {project.data.role}
-        </p>
-      )
-    }
-    {
-      project.data.tags.length > 0 && (
-        <ul class="tag-list" aria-label={`${project.data.title} tags`}>
-          {project.data.tags.map((tag) => (
-            <li>{tag}</li>
-          ))}
-        </ul>
-      )
-    }
-  </header>
+{
+  project.data.heroImage ? (
+    <header class="project-hero project-hero--image" style={heroStyle}>
+      <div class="project-hero__inner">
+        <a class="back-link" href={`${import.meta.env.BASE_URL}${locale}/projects/`}>{t.projects.backToProjects}</a>
+        <p class="eyebrow">{project.data.year} / {project.data.status}</p>
+        <h1>{project.data.title}</h1>
+        <p class="project-hero__summary">{project.data.summary}</p>
+        {
+          project.data.role && (
+            <p class="project-detail__role">
+              <strong>{t.projects.role}</strong>{" "}{project.data.role}
+            </p>
+          )
+        }
+        {
+          project.data.tags.length > 0 && (
+            <ul class="tag-list" aria-label={`${project.data.title} tags`}>
+              {project.data.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </header>
+  ) : (
+    <header class="section project-hero">
+      <a class="back-link" href={`${import.meta.env.BASE_URL}${locale}/projects/`}>{t.projects.backToProjects}</a>
+      <p class="eyebrow">{project.data.year} / {project.data.status}</p>
+      <h1>{project.data.title}</h1>
+      <p class="project-hero__summary">{project.data.summary}</p>
+    </header>
+  )
+}
 
+<article class="section project-detail">
   {
-    project.data.gallery.length > 0 && (
-      <section class="project-gallery" aria-label={`${project.data.title} screenshots`}>
-        {project.data.gallery.map((image) => (
+    galleryItems.length > 0 && (
+      <section class="project-gallery" id="project-gallery" aria-label={`${project.data.title} screenshots`}>
+        {galleryItems.map((image) => (
           <figure>
-            <img src={`${import.meta.env.BASE_URL}${image.src.replace(/^\//, "")}`} alt={image.alt} loading="lazy" />
+            <a class="project-gallery__link" href={`#${image.id}`} aria-label={`View larger image: ${image.alt}`}>
+              <img src={`${import.meta.env.BASE_URL}${image.src.replace(/^\//, "")}`} alt={image.alt} loading="lazy" />
+            </a>
             {image.caption && <figcaption>{image.caption}</figcaption>}
           </figure>
+        ))}
+        {galleryItems.map((image) => (
+          <div class="lightbox" id={image.id}>
+            <a class="lightbox__backdrop" href="#project-gallery" aria-label="Close image preview"></a>
+            <figure class="lightbox__content">
+              <img src={`${import.meta.env.BASE_URL}${image.src.replace(/^\//, "")}`} alt={image.alt} loading="lazy" />
+              {image.caption && <figcaption>{image.caption}</figcaption>}
+            </figure>
+          </div>
         ))}
       </section>
     )
@@ -64,30 +124,90 @@ const heroStyle = project.data.heroImage
     project.data.embeds.length > 0 && (
       <section class="project-tools" aria-labelledby="project-tools-heading">
         <h2 id="project-tools-heading">{t.projects.tools}</h2>
-        {project.data.embeds.map((embed) => (
+
+        {groupedEmbeds.documents.length > 0 && (
+          <div class="project-document-grid">
+            {groupedEmbeds.documents.map((embed) => (
+              embed.type === "localDocument" && embed.previewSrc && embed.fileSrc ? (
+                <article class="project-document">
+                  <div class="project-document__header">
+                    <h3>{embed.title}</h3>
+                    <a class="button button--secondary" href={`${import.meta.env.BASE_URL}${embed.fileSrc.replace(/^\//, "")}`} target="_blank" rel="noreferrer">
+                      {embed.fileLabel ?? t.projects.openFile}
+                    </a>
+                  </div>
+                  <iframe
+                    src={`${import.meta.env.BASE_URL}${embed.previewSrc.replace(/^\//, "")}`}
+                    title={embed.title}
+                    loading="lazy"
+                  ></iframe>
+                </article>
+              ) : embed.type === "googleSlides" && embed.url ? (
+                <article class="project-document">
+                  <div class="project-document__header">
+                    <h3>{embed.title}</h3>
+                    <a class="button button--secondary" href={embed.url} target="_blank" rel="noreferrer">
+                      {embed.fileLabel ?? t.projects.openFile}
+                    </a>
+                  </div>
+                  <iframe src={getGoogleSlidesSrc(embed.url)} title={embed.title} loading="lazy" allowfullscreen></iframe>
+                </article>
+              ) : embed.type === "googleSheets" && embed.url ? (
+                <article class="project-document">
+                  <div class="project-document__header">
+                    <h3>{embed.title}</h3>
+                    <a class="button button--secondary" href={embed.url} target="_blank" rel="noreferrer">
+                      {embed.fileLabel ?? t.projects.openFile}
+                    </a>
+                  </div>
+                  <iframe src={getGoogleSheetsSrc(embed.url)} title={embed.title} loading="lazy"></iframe>
+                </article>
+              ) : embed.type === "googleDocs" && embed.url ? (
+                <article class="project-document">
+                  <div class="project-document__header">
+                    <h3>{embed.title}</h3>
+                    <a class="button button--secondary" href={embed.url} target="_blank" rel="noreferrer">
+                      {embed.fileLabel ?? t.projects.openFile}
+                    </a>
+                  </div>
+                  <iframe src={getGoogleDocsSrc(embed.url)} title={embed.title} loading="lazy"></iframe>
+                </article>
+              ) : null
+            ))}
+          </div>
+        )}
+
+        {groupedEmbeds.video.length > 0 && (
+          <div class="project-video-row">
+            {groupedEmbeds.video.map((embed) => (
+              embed.type === "youtube" && embed.id && <YouTubeEmbed id={embed.id} title={embed.title} />
+            ))}
+          </div>
+        )}
+
+        {groupedEmbeds.play.length > 0 && (
+          <div class="project-play">
+            {groupedEmbeds.play.map((embed) => (
+              embed.type === "itch" && embed.url && (
+                <iframe
+                  src={embed.url}
+                  title={embed.title}
+                  loading="lazy"
+                  class="itch-embed"
+                ></iframe>
+              )
+            ))}
+          </div>
+        )}
+
+        {groupedEmbeds.other.map((embed) => (
           <>
-            {embed.type === "youtube" && embed.id && <YouTubeEmbed id={embed.id} title={embed.title} />}
             {embed.type === "googleSlides" && embed.url && <GoogleSlidesEmbed url={embed.url} title={embed.title} />}
             {embed.type === "googleDocs" && embed.url && <GoogleDocsEmbed url={embed.url} title={embed.title} />}
             {embed.type === "googleSheets" && embed.url && <GoogleSheetsEmbed url={embed.url} title={embed.title} />}
           </>
         ))}
       </section>
-    )
-  }
-
-  {
-    project.data.links.length > 0 && (
-        <footer class="project-links">
-          <h2>{t.projects.links}</h2>
-        <ul>
-          {project.data.links.map((link) => (
-            <li>
-              <a href={link.url}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
-      </footer>
     )
   }
 </article>

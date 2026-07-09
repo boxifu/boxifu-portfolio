@@ -23,29 +23,29 @@ gallery:
     alt: "Precious Stones puzzle room with spike traps, rails, and crystals"
     caption: "结合轨道、尖刺陷阱、水晶与俯视角战斗导航的谜题房间。"
 embeds:
+  - type: "itch"
+    title: "Play Precious Stones on itch.io"
+    url: "https://itch.io/embed/2094510?bg_color=8a2900&fg_color=ffffff&link_color=3772ff"
+    group: "play"
+  - type: "googleSlides"
+    title: "Design presentation"
+    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
+    fileLabel: "打开演示文稿"
+    group: "documents"
+  - type: "googleSheets"
+    title: "Game macro spreadsheet"
+    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
+    fileLabel: "打开表格"
+    group: "documents"
   - type: "youtube"
     title: "Precious Stones gameplay video"
     id: "Ui3zpIDLO6c"
-  - type: "googleSlides"
-    title: "Precious Stones design presentation"
-    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
-  - type: "googleSheets"
-    title: "Precious Stones design spreadsheet"
-    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
+    group: "video"
 tags:
   - Unity
   - 动作冒险
   - 技术美术
 featured: true
-links:
-  - label: "Play on itch.io"
-    url: "https://boxifu.itch.io/precious-stones"
-  - label: "旧作品集页面"
-    url: "https://sites.google.com/view/boxifu/precious-stones"
-  - label: "Design presentation"
-    url: "https://docs.google.com/presentation/d/1oUuo_ebELRN_BtJnH49vv2rItD1mbPqP5Au848JXVhI/present?slide=id.g2269a6cc4b7_0_1878"
-  - label: "Design spreadsheet"
-    url: "https://docs.google.com/spreadsheets/d/180cBJ3OqfawrzjgwZhUkqtDWt48ntcRqf85MQj3apvA/edit?gid=1759950694#gid=1759950694"
 ---
 
 ## 概览

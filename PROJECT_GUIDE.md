@@ -135,9 +135,11 @@ tags:
   - Unity
   - Research
 featured: false
-links:
-  - label: "Repository"
-    url: "https://github.com/boxifu/example"
+embeds:
+  - type: "youtube"
+    title: "Project video"
+    id: "YOUTUBE_VIDEO_ID"
+    group: "video"
 ---
 
 ## Overview
@@ -199,8 +201,11 @@ Project metadata conventions:
 - Keep proper project names untranslated across locales, for example `Precious Stones` or `Virtual Human Exhibition`. Translate descriptive titles such as `3D Art` or `Improved Cel Shader` when that improves readability.
 - `heroImage` adds a faded visual header to a project detail page. Use a public asset path without a leading slash, such as `assets/images/projects/project-slug/hero.png`.
 - `gallery` adds reusable screenshots below the project header. Each item needs `src` and `alt`; `caption` is optional.
-- `embeds` adds reusable project media or tools after the Markdown body. Supported types are `youtube`, `googleSlides`, `googleDocs`, and `googleSheets`.
-- Google embeds must be publicly accessible or shared/published in a way that allows iframe viewing. Keep the same URLs in `links` as a fallback when access is restricted.
+- `embeds` adds reusable project media or tools after the Markdown body. Supported types are `youtube`, `googleSlides`, `googleDocs`, `googleSheets`, `localDocument`, and `itch`.
+- Use `group: "play"` for playable embeds such as itch.io, `group: "documents"` for local document previews, and `group: "video"` for YouTube videos. The project template renders play embeds first, document previews in a two-column row, and video embeds centered below them.
+- Use `localDocument` when Google sharing is unreliable or when the file should live in the repository. Store the original file in `public/assets/downloads/projects/project-slug/` and the static preview HTML in `public/assets/previews/projects/project-slug/`.
+- Google embeds must be publicly accessible or shared/published in a way that allows iframe viewing. Prefer a `localDocument` preview plus a file button when access might be restricted.
+- `links` remains supported by the content schema for future use, but the current reusable project detail template does not render a separate Links section. Prefer embedding the most important project actions directly in `embeds`.
 
 ## Research And Publications Page
 

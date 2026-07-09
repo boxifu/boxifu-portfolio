@@ -161,6 +161,7 @@ export const ui = {
       role: "Role:",
       links: "Links",
       tools: "Development and Design Tools",
+      openFile: "Open file",
     },
     research: {
       title: "Research",
@@ -260,6 +261,7 @@ export const ui = {
       role: "职责：",
       links: "链接",
       tools: "开发与设计工具",
+      openFile: "打开文件",
     },
     research: {
       title: "研究",

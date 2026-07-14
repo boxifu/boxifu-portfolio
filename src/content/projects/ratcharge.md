@@ -8,33 +8,60 @@ status: "complete"
 category: "Digital Games"
 order: 20
 media:
-  type: "image"
-  src: "https://lh3.googleusercontent.com/sitesv/AA5AbUALRZ66aKlNf_p4aiH3ElZrz5YGLA0M73qoepQvsTIIMdpemrGG326pDUDeLU3yPI1C3OMi4Rai_NdaMb_9fG1fcHaMs-HeIyxRoWlMHNaai9_efvYG8urRCck4tuoQGcJyzAk4DLDXrqCzJxby1dJYfO0Svm_RoOf8pGUtSkn-i89RbfXc8T84Mw9iJa9dO9qwLJxs6dRURFa27rqhRQ3Styw_qg5g0AhB_Q=w1280"
-  alt: "ReCharger gameplay screenshot"
+  type: "youtube"
+  src: "DXQiK_bOek0"
+  alt: "ReCharger gameplay video"
+heroImage:
+  src: "assets/images/projects/recharger/screenshot-01.png"
+  alt: "ReCharger gameplay area with platforms, plugs, and charge devices"
+gallery:
+  - src: "assets/images/projects/recharger/screenshot-01.png"
+    alt: "ReCharger overview room with electronics, platforms, and battery character"
+    caption: "A platforming puzzle room built around electronics, charge sources, and traversal routes."
+  - src: "assets/images/projects/recharger/screenshot-02.png"
+    alt: "ReCharger gameplay encounter with enemies and electrical devices"
+    caption: "Gameplay space combining platforming movement, enemies, plugs, and charge interactions."
+  - src: "assets/images/projects/recharger/screenshot-03.png"
+    alt: "ReCharger title menu with start, level select, and how to play buttons"
+    caption: "Title and menu UI with animated presentation and clear entry points for players."
+embeds:
+  - type: "localDocument"
+    title: "Design macro and bug list"
+    previewSrc: "assets/previews/projects/recharger/design-macro-preview.html"
+    fileSrc: "assets/images/projects/recharger/design-macro.png"
+    fileLabel: "Open image"
+    group: "documents"
+  - type: "itch"
+    title: "Play ReCharger on itch.io"
+    url: "https://itch.io/embed/2090166?bg_color=193d3f&fg_color=ffffff&link_color=74ff41"
+    group: "play"
 tags:
   - Unity
   - Platformer
   - Puzzle
 featured: true
-links:
-  - label: "Old portfolio page"
-    url: "https://sites.google.com/view/boxifu/recharger"
-  - label: "BOOOM Challenge"
-    url: "https://site.gcores.com/booom2023/"
 ---
 
 ## Overview
 
-ReCharger is a character platformer-puzzle game made for the 2023 BOOOM Challenge under the theme "Re-". The player controls a battery that charges itself through electronics, stores energy, and spends it on actions such as double jump, discharge, and dash.
+ReCharger is a character platformer-puzzle game made for the 2023 BOOOM Challenge under the theme "Re-". The player controls a battery who needs to charge itself using electronics, then spend stored charge to perform actions such as double jump, discharge, and dash.
+
+The game was made by Boxi Fu, Lihao Chen, Jerry Ye, Devis Lai, and Xin. It was submitted to BOOOM Challenge 2023, where the design prompt was built around the idea of "Re-".
 
 ## Contributions
 
-- Implemented puzzle mechanics including batteries and linked power plugs.
-- Built level design layouts and reusable level prefabs.
-- Implemented UI and menu behavior.
-- Created character animations and animator state machines.
-- Produced title/menu UI animation and helped retouch art assets.
+As a programmer, I implemented:
 
-## Media To Review
+- Puzzle mechanics, including batteries and linked power plugs.
+- Level design layouts and reusable level prefabs.
+- UI behavior and implementation.
 
-The old portfolio page includes screenshots, design notes, bug lists, and a play link that should be reviewed when expanding this page.
+As an artist and technical artist, I created:
+
+- Character animations and animator state machines.
+- UI animation for the title screen and menu.
+- Art asset implementation, polish, and retouching.
+
+## Development Notes
+
+ReCharger uses a compact game-jam structure: a readable core mechanic, a small set of reusable puzzle devices, and fast iteration around traversal feel. The page now follows the shared project-page pattern established with Precious Stones: a faded visual hero, screenshot gallery, contribution notes, a development artifact preview, and a playable itch.io embed.

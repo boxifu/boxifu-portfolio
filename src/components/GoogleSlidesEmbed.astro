@@ -6,9 +6,8 @@ type Props = {
 
 const { url, title } = Astro.props;
 const parsedUrl = new URL(url);
-const slide = parsedUrl.searchParams.get("slide");
-const baseUrl = `${parsedUrl.origin}${parsedUrl.pathname.replace(/\/(edit|present).*$/, "")}/embed`;
-const src = `${baseUrl}?start=false&loop=false&delayms=3000${slide ? `&slide=${slide}` : ""}`;
+const baseUrl = `${parsedUrl.origin}${parsedUrl.pathname.replace(/\/(edit|present|embed|preview).*$/, "")}/preview`;
+const src = baseUrl;
 ---
 
 <figure class="embed embed--document">

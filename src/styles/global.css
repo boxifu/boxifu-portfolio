@@ -801,9 +801,10 @@ body:not(.home-page) main {
 }
 
 .project-gallery {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
   margin: 2rem 0 2.5rem;
 }
 
@@ -812,8 +813,11 @@ body:not(.home-page) main {
   border-radius: 8px;
   background: var(--color-surface);
   box-shadow: var(--shadow-card);
+  flex: 1 1 min(100%, 26rem);
   margin: 0;
+  max-width: 34rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .project-gallery__link {
@@ -939,7 +943,8 @@ body:not(.home-page) main {
 .project-document-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 34rem));
+  justify-content: center;
   margin: 1.5rem 0 2rem;
 }
 
@@ -948,7 +953,9 @@ body:not(.home-page) main {
   border: 1px solid var(--color-line);
   border-radius: 8px;
   box-shadow: var(--shadow-card);
+  max-width: 34rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .project-document__header {

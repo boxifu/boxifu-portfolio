@@ -5,7 +5,10 @@ type Props = {
 };
 
 const { url, title } = Astro.props;
-const src = url.includes("output=html") ? url : `${url.replace(/\/edit.*$/, "")}/pubhtml?widget=true&headers=false`;
+const parsedUrl = new URL(url);
+const gid = parsedUrl.searchParams.get("gid") ?? parsedUrl.hash.match(/gid=(\d+)/)?.[1];
+const baseUrl = `${parsedUrl.origin}${parsedUrl.pathname.replace(/\/(edit|pubhtml|preview).*$/, "")}/preview`;
+const src = `${baseUrl}${gid ? `?gid=${gid}` : ""}`;
 ---
 
 <figure class="embed embed--document">

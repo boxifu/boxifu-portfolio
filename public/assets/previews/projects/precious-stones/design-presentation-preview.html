@@ -1,155 +1,93 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Precious Stones design presentation</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f7f8f3;
-      --surface: #ffffff;
-      --ink: #1a1f24;
-      --muted: #5c6670;
-      --line: #d8ded6;
-      --accent: #176b68;
-    }
-    * { box-sizing: border-box; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-      margin: 0;
-      padding: 1rem;
-    }
-    h1 {
-      font-size: 1.25rem;
-      margin: 0 0 1rem;
-    }
-    h2 {
-      font-size: 1rem;
-      margin: 0 0 0.65rem;
-    }
-    p {
-      color: var(--muted);
-      margin: 0 0 0.55rem;
-    }
-    .preview-grid {
-      display: grid;
-      gap: 0.8rem;
-    }
-    .slide-card,
-    .sheet-section {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-    .slide-number {
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 800;
-      margin-bottom: 0.55rem;
-      text-transform: uppercase;
-    }
-    .table-wrap {
-      max-height: 26rem;
-      overflow: auto;
-    }
-    table {
-      border-collapse: collapse;
-      font-size: 0.85rem;
-      min-width: 100%;
-    }
-    td {
-      border: 1px solid var(--line);
-      padding: 0.38rem 0.5rem;
-      vertical-align: top;
-      white-space: nowrap;
-    }
-  </style>
-</head>
-<body>
-  <h1>Precious Stones design presentation</h1>
-  <main class="preview-grid">
-    
-            <article class="slide-card">
-              <div class="slide-number">Slide 1</div>
-              <h2>Boxi Fu &amp; Mingfu Li</h2>
-              <p>Diji Diallo, Franco Grimoldi Calo, Jose Pescador &amp; Mallow Chu</p><p>Final Presentation</p>
-            </article>
-            
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Precious Stones Design Presentation Preview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f7f8f3;
+        color: #192024;
+      }
 
-            <article class="slide-card">
-              <div class="slide-number">Slide 2</div>
-              <h2>Precious Stones</h2>
-              <p>A Character action-adventure game</p><p>Play as a dwarf who starts an adventure following his father’s wishes</p><p>Use his beloved hammer to defeat monsters and solve puzzles</p><p>Boxi &amp; Mingfu</p>
-            </article>
-            
+      body {
+        margin: 0;
+        padding: 0.85rem;
+      }
 
-            <article class="slide-card">
-              <div class="slide-number">Slide 3</div>
-              <h2>More on Precious Stones</h2>
-              <p>Release on PC (Mouse and Keyboard control)</p><p>People who are new to action-adventure genre</p><p>Combat, Puzzles &amp; Interconnected levels</p><p>Beautiful background musics and juicy sound effects</p><p>Boxi &amp; Mingfu</p>
-            </article>
-            
+      .deck {
+        display: grid;
+        gap: 0.85rem;
+      }
 
-            <article class="slide-card">
-              <div class="slide-number">Slide 4</div>
-              <h2>Gameplay Demo!</h2>
-              <p>Boxi &amp; Mingfu</p>
-            </article>
-            
+      .slide {
+        background: #fff;
+        border: 1px solid #d8ded4;
+        border-radius: 8px;
+        margin: 0;
+        overflow: hidden;
+      }
 
-            <article class="slide-card">
-              <div class="slide-number">Slide 5</div>
-              <h2>Boxi &amp; Mingfu</h2>
-              
-            </article>
-            
+      img {
+        display: block;
+        width: 100%;
+      }
 
-            <article class="slide-card">
-              <div class="slide-number">Slide 6</div>
-              <h2>Production Values</h2>
-              <p>We chose the simplistic and stylistic low-polygon art for most of our 3D assets.</p><p>Many cute and little sequences of character and UI animations</p><p>We used techniques like camera shake, frame freezing, and particles for game feel</p><p>Boxi &amp; Mingfu</p>
-            </article>
-            
-
-            <article class="slide-card">
-              <div class="slide-number">Slide 7</div>
-              <h2>Behind the scenes</h2>
-              <p>First hammer throwing &amp; recalling prototype</p><p>Critics on “juiciness”</p><p>Boxi &amp; Mingfu</p>
-            </article>
-            
-
-            <article class="slide-card">
-              <div class="slide-number">Slide 8</div>
-              <h2>Behind the scenes</h2>
-              <p>Hammer throwing/recalling iteration</p><p>Aiming Correction</p><p>Input Changes</p><p>Boxi &amp; Mingfu</p>
-            </article>
-            
-
-            <article class="slide-card">
-              <div class="slide-number">Slide 9</div>
-              <h2>Future of our game</h2>
-              <p>Release on Itch.io</p><p>Controller support</p><p>Localization</p>
-            </article>
-            
-
-            <article class="slide-card">
-              <div class="slide-number">Slide 10</div>
-              <h2>Thank you!</h2>
-              <p>Boxi &amp; Mingfu</p>
-            </article>
-            
-
-            <article class="slide-card">
-              <div class="slide-number">Slide 11</div>
-              <h2>Credit</h2>
-              <p>USC Games</p><p>Berklee College of Music</p>
-            </article>
-            
-  </main>
-</body>
+      figcaption {
+        color: #53615b;
+        font-size: 0.82rem;
+        padding: 0.55rem 0.7rem 0.7rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" aria-label="Precious Stones design presentation slides">
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide1.PNG" alt="Slide1">
+        <figcaption>Slide1</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide10.PNG" alt="Slide10">
+        <figcaption>Slide10</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide11.PNG" alt="Slide11">
+        <figcaption>Slide11</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide2.PNG" alt="Slide2">
+        <figcaption>Slide2</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide3.PNG" alt="Slide3">
+        <figcaption>Slide3</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide4.PNG" alt="Slide4">
+        <figcaption>Slide4</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide5.PNG" alt="Slide5">
+        <figcaption>Slide5</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide6.PNG" alt="Slide6">
+        <figcaption>Slide6</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide7.PNG" alt="Slide7">
+        <figcaption>Slide7</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide8.PNG" alt="Slide8">
+        <figcaption>Slide8</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="design-presentation-slides/Slide9.PNG" alt="Slide9">
+        <figcaption>Slide9</figcaption>
+      </figure>
+    </main>
+  </body>
 </html>

@@ -200,11 +200,12 @@ Project metadata conventions:
 - `media.alt` should describe the image when `media.type` is `image` or describe the placeholder when no media is ready yet.
 - Keep proper project names untranslated across locales, for example `Precious Stones` or `Virtual Human Exhibition`. Translate descriptive titles such as `3D Art` or `Improved Cel Shader` when that improves readability.
 - `heroImage` adds a faded visual header to a project detail page. Use a public asset path without a leading slash, such as `assets/images/projects/project-slug/hero.png`.
-- `gallery` adds reusable screenshots below the project header. Each item needs `src` and `alt`; `caption` is optional.
+- `gallery` adds reusable screenshots below the project header. Each item needs `src` and `alt`; `caption` is optional. The shared layout wraps screenshots into centered rows, so odd final rows should remain visually balanced without custom per-project CSS.
 - `embeds` adds reusable project media or tools after the Markdown body. Supported types are `youtube`, `googleSlides`, `googleDocs`, `googleSheets`, `localDocument`, and `itch`.
-- Use `group: "play"` for playable embeds such as itch.io, `group: "documents"` for local document previews, and `group: "video"` for YouTube videos. The project template renders play embeds first, document previews in a two-column row, and video embeds centered below them.
-- Use `localDocument` when Google sharing is unreliable or when the file should live in the repository. Store the original file in `public/assets/downloads/projects/project-slug/` and the static preview HTML in `public/assets/previews/projects/project-slug/`.
+- Use `group: "play"` for playable embeds such as itch.io, `group: "documents"` for local document previews, and `group: "video"` for YouTube videos. The project template renders document previews first, video embeds centered below them, and playable embeds last. Document previews wrap into centered rows, so one document or an odd final row should be centered automatically.
+- Use `localDocument` when Google iframe preview is unreliable or when the file should live in the repository. Store the static preview HTML in `public/assets/previews/projects/project-slug/`. `fileSrc` can point to either a local file in `public/assets/downloads/projects/project-slug/` or an external file such as the original Google Slides sharing link.
 - Google embeds must be publicly accessible or shared/published in a way that allows iframe viewing. Prefer a `localDocument` preview plus a file button when access might be restricted.
+- Shared Google links and published Google embeds are not the same thing. The reusable Google embed components use `/preview` URLs so "anyone with the link can view" files are more likely to render. Google `/embed` and Sheets `/pubhtml` URLs usually require File > Share > Publish to web.
 - `links` remains supported by the content schema for future use, but the current reusable project detail template does not render a separate Links section. Prefer embedding the most important project actions directly in `embeds`.
 
 ## Research And Publications Page

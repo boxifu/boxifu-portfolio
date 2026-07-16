@@ -39,25 +39,28 @@ const getGoogleSheetsSrc = (url: string) => {
 };
 const getGoogleDocsSrc = (url: string) => (url.includes("/preview") ? url : `${url.replace(/\/edit.*$/, "")}/preview`);
 const groupedEmbeds = {
-  play: project.data.embeds.filter((embed) => embed.group === "play" || embed.type === "itch"),
+  play: project.data.embeds.filter((embed) => embed.group === "play" || embed.type === "itch" || embed.type === "steam"),
   documents: project.data.embeds.filter(
     (embed) =>
       embed.group === "documents" ||
       embed.type === "localDocument" ||
       embed.type === "googleSlides" ||
       embed.type === "googleDocs" ||
-      embed.type === "googleSheets",
+      embed.type === "googleSheets" ||
+      embed.type === "figma",
   ),
   video: project.data.embeds.filter((embed) => embed.group === "video" || (embed.type === "youtube" && embed.group !== "documents")),
   other: project.data.embeds.filter(
     (embed) =>
       !embed.group &&
       embed.type !== "itch" &&
+      embed.type !== "steam" &&
       embed.type !== "localDocument" &&
       embed.type !== "youtube" &&
       embed.type !== "googleSlides" &&
       embed.type !== "googleDocs" &&
-      embed.type !== "googleSheets",
+      embed.type !== "googleSheets" &&
+      embed.type !== "figma",
   ),
 };
 ---
@@ -179,6 +182,16 @@ const groupedEmbeds = {
                   </div>
                   <iframe src={getGoogleDocsSrc(embed.url)} title={embed.title} loading="lazy"></iframe>
                 </article>
+              ) : embed.type === "figma" && embed.url ? (
+                <article class="project-document">
+                  <div class="project-document__header">
+                    <h3>{embed.title}</h3>
+                    <a class="button button--secondary" href={embed.fileSrc ? toPublicPath(embed.fileSrc) : embed.url} target="_blank" rel="noreferrer">
+                      {embed.fileLabel ?? t.projects.openFile}
+                    </a>
+                  </div>
+                  <iframe src={embed.url} title={embed.title} loading="lazy" allowfullscreen></iframe>
+                </article>
               ) : null
             ))}
           </div>
@@ -201,6 +214,13 @@ const groupedEmbeds = {
                   title={embed.title}
                   loading="lazy"
                   class="itch-embed"
+                ></iframe>
+              ) || embed.type === "steam" && embed.url && (
+                <iframe
+                  src={embed.url}
+                  title={embed.title}
+                  loading="lazy"
+                  class="steam-embed"
                 ></iframe>
               )
             ))}

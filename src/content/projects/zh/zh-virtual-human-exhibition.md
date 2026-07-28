@@ -10,8 +10,18 @@ category: "Research Works"
 order: 20
 media:
   type: "image"
-  src: "https://lh3.googleusercontent.com/sitesv/AA5AbUBSYNxlqeW7bXGF2otnwLMSBWDqVzUZ-4N7XBTYgWPc-fDOHQ0UdaJvVZpomSTt5ND3IEliTlSJVaxhx-T_hQVRg1LlYzvsl7ccuYCOaAFeQs1kTnYov_dIQeT8SgXQe7J6RXvMzhi7ID_ssT4jfI-F-VhSYJcSwDeJfVZUaNd8eibiMufa3HXqE-QUDu6JZ8V2neXTEjAIi5i4dFstFV7coLiBSZ4kgAASfumR=w1280"
-  alt: "Virtual Human Exhibition screenshot"
+  src: "/assets/images/projects/virtual-human-exhibition/cover.png"
+  alt: "Virtual Human Exhibition project poster"
+heroImage:
+  src: "/assets/images/projects/virtual-human-exhibition/cover.png"
+  alt: "Virtual Human Exhibition project poster"
+gallery:
+  - src: "/assets/images/projects/virtual-human-exhibition/screenshot-01.png"
+    alt: "Virtual Human Exhibition virtual human screenshot"
+    caption: "从旧作品集页面恢复的 virtual human 角色截图。"
+  - src: "/assets/images/projects/virtual-human-exhibition/screenshot-02.png"
+    alt: "Virtual Human Exhibition museum environment screenshot"
+    caption: "从旧作品集页面恢复的博物馆环境截图。"
 tags:
   - AI 教育
   - 博物馆展项
@@ -24,13 +34,31 @@ links:
     url: "https://ict.usc.edu/"
   - label: "旧作品集页面"
     url: "https://sites.google.com/view/boxifu/virtual-human-exhibition?authuser=1"
+embeds:
+  - type: "website"
+    title: "Lawrence Hall of Science exhibit page"
+    url: "https://lawrencehallofscience.org/exhibits/virtually-human/"
+    fileLabel: "打开展项页"
+    group: "documents"
+  - type: "website"
+    title: "USC ICT"
+    url: "https://ict.usc.edu/"
+    fileLabel: "打开 USC ICT"
+    group: "documents"
 ---
 
-## Overview
+## 概览
 
-Virtual Human Exhibition 是部署在 Lawrence Hall of Science 的 USC ICT 研究项目。页面后续可以继续补充各个活动、系统结构和展项截图。
+Virtual Human Exhibition 是 USC ICT 与 UC Berkeley Lawrence Hall of Science 相关的研究展项项目，目前部署在 Lawrence Hall of Science。项目通过一系列面向儿童的互动体验，让观众与虚拟人角色直接互动，并了解人脸识别、自然语言处理、神经网络等 AI 能力。
 
-## Contributions
+## 贡献
 
-- 参与活动管理系统、状态机、Unity 前端与 AI 后端通信系统开发。
-- 制作 UI、交互物、角色动画、服装设计、3D 背景和媒体素材。
+- 参与活动管理系统和状态机开发。
+- 实现 Unity 前端与 AI 后端之间的消息通信处理。
+- 制作每个活动中的 UI 布局和交互物。
+- 参与角色动画、服装设计、3D 背景、视频和图像素材准备。
+
+## 后续可补充
+
+- 旧作品集没有暴露 gameplay video ID，所以目前使用本地捕获的截图。
+- 后续可继续加入每个活动的交互流程说明和系统结构。

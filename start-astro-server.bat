@@ -28,7 +28,7 @@ echo Starting Boxifu Portfolio Astro dev server...
 echo Local URL: http://127.0.0.1:4321/boxifu-portfolio/
 echo.
 
-"%PNPM_CMD%" dev -- --host 127.0.0.1
+"%PNPM_CMD%" astro dev --host 127.0.0.1
 
 echo.
 echo Astro server stopped.

@@ -25,9 +25,10 @@ gallery:
     alt: "Unnamed Surgeon Game title menu with surgeon operating room artwork"
     caption: "Title/menu presentation using a compact operating-room scene and green surgical lighting."
 embeds:
-  - type: "googleSlides"
+  - type: "localDocument"
     title: "GGJ 2024 Art Bible"
-    url: "https://docs.google.com/presentation/d/11HqRz6iWuCp5dXaA2GGKNISw8CTmVRn9lrgoMi7kvow/edit?usp=sharing"
+    previewSrc: "assets/previews/projects/unnamed-surgeon-game/art-bible-preview.html"
+    fileSrc: "https://docs.google.com/presentation/d/11HqRz6iWuCp5dXaA2GGKNISw8CTmVRn9lrgoMi7kvow/edit?usp=sharing"
     fileLabel: "Open art bible"
     group: "documents"
   - type: "googleDocs"

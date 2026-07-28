@@ -11,21 +11,23 @@ type Props = {
 const { project, locale } = Astro.props;
 const href = `${import.meta.env.BASE_URL}${locale}/projects/${getProjectSlug(project)}/`;
 const media = project.data.media;
-const mediaSrc = media.src?.startsWith("http")
-  ? media.src
-  : media.src
-    ? `${import.meta.env.BASE_URL}${media.src.replace(/^\//, "")}`
+const fallbackImage = media.type === "placeholder" ? project.data.gallery[0] : undefined;
+const displayMedia = fallbackImage ? { type: "image", src: fallbackImage.src, alt: fallbackImage.alt } : media;
+const mediaSrc = displayMedia.src?.startsWith("http")
+  ? displayMedia.src
+  : displayMedia.src
+    ? `${import.meta.env.BASE_URL}${displayMedia.src.replace(/^\//, "")}`
     : "";
 ---
 
 <article class="project-card">
   <div class="project-card__media" aria-label={`${project.data.title} media`}>
     {
-      media.type === "image" && mediaSrc ? (
-        <img src={mediaSrc} alt={media.alt ?? `${project.data.title} preview`} loading="lazy" />
-      ) : media.type === "youtube" && media.src ? (
+      displayMedia.type === "image" && mediaSrc ? (
+        <img src={mediaSrc} alt={displayMedia.alt ?? `${project.data.title} preview`} loading="lazy" />
+      ) : displayMedia.type === "youtube" && displayMedia.src ? (
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/${media.src}`}
+          src={`https://www.youtube-nocookie.com/embed/${displayMedia.src}`}
           title={`${project.data.title} video`}
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

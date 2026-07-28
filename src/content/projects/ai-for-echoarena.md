@@ -1,4 +1,4 @@
-﻿---
+---
 title: "AI For EchoArena"
 summary: "A UC Berkeley research project that recreated training scenarios for EchoArena and used knowledge tracing to personalize trainee curricula."
 role: "Programmer, technical artist, animator, designer"
@@ -8,8 +8,21 @@ category: "Research Works"
 order: 30
 media:
   type: "image"
-  src: "https://lh3.googleusercontent.com/sitesv/AA5AbUAYtia1SmwU-j0JqUOfDR7k8eKtG-8l7cBANTLNjxvStay7IjNQDEjgJLYkbgzCd1u_kVJKxVQF3WcOUE6_5RS7l1CxYpjq7TKf8SvsJYYU5mDkqItO62junB2Ivr9K3boNxRGXV7C5qT3Vm28nQP71boc_kL702KSFdDStfxiADOuW1pXIR49Ap44Yv3Pv98-qT5ic_ikXQKHWCUtB7K3mUlNvXOlmbVySFRYe=w1280"
-  alt: "AI For EchoArena screenshot"
+  src: "/assets/images/projects/ai-for-echoarena/cover.png"
+  alt: "AI For EchoArena project poster"
+heroImage:
+  src: "/assets/images/projects/ai-for-echoarena/cover.png"
+  alt: "AI For EchoArena project poster"
+gallery:
+  - src: "/assets/images/projects/ai-for-echoarena/screenshot-01.png"
+    alt: "AI For EchoArena training scene screenshot"
+    caption: "Training scene screenshot recovered from the old AI For EchoArena portfolio page."
+  - src: "/assets/images/projects/ai-for-echoarena/screenshot-02.png"
+    alt: "AI For EchoArena knowledge tracing diagram"
+    caption: "Knowledge tracing diagram recovered from the old portfolio page."
+  - src: "/assets/images/projects/ai-for-echoarena/screenshot-03.png"
+    alt: "AI For EchoArena server and player POV screenshot"
+    caption: "Server and player POV screenshot recovered from the old portfolio page."
 tags:
   - AI
   - Knowledge Tracing
@@ -22,6 +35,17 @@ links:
     url: "https://chi2023.acm.org/"
   - label: "Related Google Scholar profile"
     url: "https://scholar.google.com/citations?user=cTnv_d8AAAAJ&hl=en"
+embeds:
+  - type: "website"
+    title: "CHI 2023"
+    url: "https://chi2023.acm.org/"
+    fileLabel: "Open CHI"
+    group: "documents"
+  - type: "website"
+    title: "Related Google Scholar profile"
+    url: "https://scholar.google.com/citations?user=cTnv_d8AAAAJ&hl=en"
+    fileLabel: "Open Scholar"
+    group: "documents"
 ---
 
 ## Overview
@@ -39,3 +63,11 @@ The research focused on personalized XR training for psychomotor skills, using p
 - Worked on disk, environment, and player interaction behavior.
 - Built EchoArena map and 3D environment support.
 
+## Research Context
+
+The old portfolio included the abstract for the related CHI 2023 research, describing a system that models distributions of XR training tasks as probabilistic programs, predicts skill mastery with Bayesian knowledge tracing, and adapts curricula through personalized task sequencing.
+
+## Notes For Expansion
+
+- The old portfolio crawl did not expose a YouTube gameplay ID, so this page uses local screenshot captures from the old page.
+- Add publication figures or a direct paper link later if allowed for portfolio reuse.

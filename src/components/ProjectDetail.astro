@@ -47,7 +47,8 @@ const groupedEmbeds = {
       embed.type === "googleSlides" ||
       embed.type === "googleDocs" ||
       embed.type === "googleSheets" ||
-      embed.type === "figma",
+      embed.type === "figma" ||
+      embed.type === "website",
   ),
   video: project.data.embeds.filter((embed) => embed.group === "video" || (embed.type === "youtube" && embed.group !== "documents")),
   other: project.data.embeds.filter(
@@ -60,7 +61,8 @@ const groupedEmbeds = {
       embed.type !== "googleSlides" &&
       embed.type !== "googleDocs" &&
       embed.type !== "googleSheets" &&
-      embed.type !== "figma",
+      embed.type !== "figma" &&
+      embed.type !== "website",
   ),
 };
 ---
@@ -191,6 +193,16 @@ const groupedEmbeds = {
                     </a>
                   </div>
                   <iframe src={embed.url} title={embed.title} loading="lazy" allowfullscreen></iframe>
+                </article>
+              ) : embed.type === "website" && embed.url ? (
+                <article class="project-document">
+                  <div class="project-document__header">
+                    <h3>{embed.title}</h3>
+                    <a class="button button--secondary" href={embed.url} target="_blank" rel="noreferrer">
+                      {embed.fileLabel ?? t.projects.openFile}
+                    </a>
+                  </div>
+                  <iframe src={embed.url} title={embed.title} loading="lazy"></iframe>
                 </article>
               ) : null
             ))}

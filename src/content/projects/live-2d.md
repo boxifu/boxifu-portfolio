@@ -16,17 +16,32 @@ tags:
   - Character Art
 featured: false
 links:
-  - label: "Old portfolio page"
-    url: "https://sites.google.com/view/boxifu/live-2d"
+  - label: "Old portfolio home"
+    url: "https://sites.google.com/view/boxifu/home?authuser=1"
   - label: "Live2D"
     url: "https://www.live2d.com/en/"
+embeds:
+  - type: "youtube"
+    title: "Live2D rigging demo"
+    id: "c1VvBoX7U5o"
+    group: "video"
+  - type: "youtube"
+    title: "Live2D animation demo"
+    id: "enICDFb2PRM"
+    group: "video"
+  - type: "youtube"
+    title: "Live2D model test"
+    id: "TRcXl5aoYGk"
+    group: "video"
 ---
 
 ## Overview
 
 Live2D work focuses on separating 2D character illustrations into parts and animating those layers through Live2D Cubism parameters. These rigs can be used with face-tracking applications and interactive character systems.
 
-## Media To Review
+## Notes For Expansion
 
-The old portfolio page includes multiple Live2D videos, including `c1VvBoX7U5o`, `enICDFb2PRM`, and `TRcXl5aoYGk`.
+The old portfolio home listed Live2D under the visual-art section, and an earlier crawl recovered three related video IDs: `c1VvBoX7U5o`, `enICDFb2PRM`, and `TRcXl5aoYGk`.
+
+Add rig screenshots, parameter diagrams, or model breakdowns when source files are available.
 
